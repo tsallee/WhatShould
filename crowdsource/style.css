@@ -29,9 +29,10 @@ html, body {
 }
 
 #header td {
-	padding: 0em;
+	padding: .5em;
 	text-align: right;
 	margin: 0em;
+
 }
 
 #header_bar {
@@ -50,4 +51,17 @@ a.header {
 
 a.header:hover {
 	text-decoration: underline;
+}
+
+a.goButton {
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+	border-radius: .5em;
+	padding: .5em;
+	background: #3ADF00;
+}
+
+a.goButton:hover {
+	background: #40FF00;
 }

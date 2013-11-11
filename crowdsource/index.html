@@ -12,26 +12,29 @@
 		<script src = "jquery-1.10.2.min.js"></script>
 	</head>
 
-	<body>
+	<body onload = "load()">
 
 		<div id = "header_bar">
 			<a class = "header" href = # onclick = "topUsers()">Top Users</a> | 
-			<a class = "header" href = # onclick = "createAccount()">Create Account</a> | 
+			<a class = "header" href = "createAccount.html">Create Account</a> | 
 			<a class = "header" href = # onclick = "displayLogIn()">Log in</a>
 			<br>
 			<table id = "login_table">
-				<tr><td>
-					<label>Username:</label>
-					<input id = "username">
-				</td>
-				<td rowspan = 2>
-					<a href = # onclick = "login()">
-				</td>
+				<tr>
+					<td>
+						<label>Username:</label>
+						<input id = "username">
+					</td>
+					<td rowspan = 2>
+						<a class = "goButton" href = # onclick = "login()">Go</a>
+					</td>
 				</tr>
-				<tr><td>
-					<label>Password:</label>
-					<input id = "password">
-				</td></tr>
+				<tr>
+					<td>
+						<label>Password:</label>
+						<input type = "password" id = "password">
+					</td>
+				</tr>
 			</table>
 		</div>
 
