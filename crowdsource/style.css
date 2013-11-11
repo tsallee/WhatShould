@@ -1,0 +1,45 @@
+html, body {
+	width: 100%;
+	height: 100%; 
+	font-family: verdana, arial, sans-serif;
+}
+
+#login_div {
+	display: none;
+	position: relative;
+	border-radius: .4em;
+	background: #A4A4A4;
+	padding: .7em;
+	font-size: 1em;
+	text-align: right;
+	z-index: 1;
+}
+
+#header {
+	position: absolute;
+	right: 3em; top: .2em;
+	z-index: 1;
+	text-align: right;
+}
+
+#header td {
+	text-align: right;
+}
+
+#header_bar {
+	font-weight: bold;
+	width: 100%;
+	font-size: 1.5em;
+	text-align: right;
+	padding: 1em;
+	color: #610B21;
+}
+
+a.header {
+	color: #610B21;
+	text-decoration: none;
+}
+
+a.header:hover {
+	text-decoration: underline;
+}

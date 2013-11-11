@@ -1,0 +1,29 @@
+#suggestion_box {
+	border-radius: 3em;
+	margin: 8em auto 2em auto;
+	padding: 2em 4em 3em 4em;
+	width: 40%;
+	text-align: left;
+	background: #A4A4A4;
+	text-transform: uppercase;
+}
+
+.suggestion {
+	color: black;
+}
+
+p.suggestion {
+	font-size: 3.2em;
+}
+
+a.suggestion {
+	margin-left: 1.2em;
+	font-weight: bold;
+	line-height: 200%;
+	font-size: 3em;
+	text-decoration: none;
+}
+
+a.suggestion:hover {
+	color: #424242;
+}
