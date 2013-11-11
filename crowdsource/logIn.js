@@ -1,4 +1,4 @@
 function displayLogIn() {
-	var loginDiv = document.getElementById("login_div");
-	$(loginDiv).slideToggle(700);
+	var loginTable = document.getElementById("login_table");
+	$(loginTable).fadeToggle(700);
 }

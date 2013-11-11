@@ -19,13 +19,20 @@
 			<a class = "header" href = # onclick = "createAccount()">Create Account</a> | 
 			<a class = "header" href = # onclick = "displayLogIn()">Log in</a>
 			<br>
-			<div id = "login_div">
-				<label>Username:</label>
-				<input id = "username">
-				<br><br>
-				<label>Password:</label>
-				<input id = "password">
-			</div>
+			<table id = "login_table">
+				<tr><td>
+					<label>Username:</label>
+					<input id = "username">
+				</td>
+				<td rowspan = 2>
+					<a href = # onclick = "login()">
+				</td>
+				</tr>
+				<tr><td>
+					<label>Password:</label>
+					<input id = "password">
+				</td></tr>
+			</table>
 		</div>
 
 		<div id = "suggestion_box">
