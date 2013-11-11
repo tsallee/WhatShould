@@ -4,26 +4,30 @@ html, body {
 	font-family: verdana, arial, sans-serif;
 }
 
-#login_div {
+#header_bar div {
 	display: none;
-	position: relative;
 	border-radius: .4em;
 	background: #A4A4A4;
-	padding: .7em;
-	font-size: 1em;
-	text-align: right;
+	margin-top: .5em;
+	font-size: .6em;
+	padding: .5em;
+	width: 20%;
+	position: relative;
+	left: 79%; top: 0%;
 	z-index: 1;
 }
 
-#header {
+#header_bar {
+	padding: 0em;
 	position: absolute;
-	right: 3em; top: .2em;
+	right: 1em; top: 0em;
 	z-index: 1;
-	text-align: right;
 }
 
 #header td {
+	padding: 0em;
 	text-align: right;
+	margin: 0em;
 }
 
 #header_bar {
