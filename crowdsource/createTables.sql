@@ -30,6 +30,6 @@ CREATE TABLE todo_list(
 
 CREATE TABLE user_voted_posts(
 	foreign key (post_id) references post(id),
-	foreign key (user_id) references user(id),
+	foreign key (user_id) references user(id)
 );
 
