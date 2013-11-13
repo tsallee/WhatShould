@@ -7,15 +7,18 @@ if (mysqli_connect_errno()) {
 	exit;
 }
 
-// Get field information from Create Account page
+// Get the information from the post page
+$content = $_POST('content');
 $username = $_POST('username');
-$password = md5($_POST('password'));
-$email = $_POST('email');
+$category = $_POST('category');
+
+$get_user_id_query = "select * from user where username =".$username.";";
+$user_id = $db->query($get_user_id_query)->fetch_assoc()['username']; /* This may be a problem */
 
 // Prepare query statement and execute it
-$create_user_query = "INSERT INTO user (id, username, password, email, score, currency, quality_count, new_count) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+$create_user_query = "INSERT INTO post (id, content, upvotes, downvotes, user_id, category, flagged) VALUES (?, ?, ?, ?, ?, ?, ?)"
 $stmt = $db->prepare($create_user_query);
-$stmt->bind_param(NULL, $username, $password, $email, 0, 20, 0, 0);
+$stmt->bind_param(NULL, $content, 0, 0, 0, $user_id, $category, false);
 $stmt->bind_result($result);
 $stmt->execute();
 
@@ -28,7 +31,7 @@ $db->close();
 
 if (!$result) {
 	// Result was false (error inserting into database)
-	echo "Error: Could not insert user into the database. Please try again later.";
+	echo "Error: Could not insert post into the database. Please try again later.";
 	exit
 } else {
 	echo "Yay! Thanks for joining";
