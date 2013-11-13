@@ -1,4 +1,4 @@
-<?php
+<?p
 
 // Try to connect to the database
 @ $db = new mysqli('localhost', 'team10', 'pear', 'team10');
@@ -16,25 +16,26 @@ $get_user_id_query = "select * from user where username =".$username.";";
 $user_id = $db->query($get_user_id_query)->fetch_assoc()['username']; /* This may be a problem */
 
 // Prepare query statement and execute it
-$create_user_query = "INSERT INTO post (id, content, upvotes, downvotes, user_id, category, flagged) VALUES (?, ?, ?, ?, ?, ?, ?)"
+$create_user_query = "INSERT INTO post (id, content, user_id upvotes, downvotes, category, flagged) VALUES (?, ?, ?, ?, ?, ?, ?)"
 $stmt = $db->prepare($create_user_query);
-$stmt->bind_param(NULL, $content, 0, 0, 0, $user_id, $category, false);
-$stmt->bind_result($result);
-$stmt->execute();
 
-//Fetches result and puts it in $result
-$stmt->fetch();
+// Assign the remaining variables for the insert statment
+$id = NULL;
+$upvotes = 0;
+$downvotes = 0;
+$flagged = false;
 
-// Free the result and close database
-$stmt->free_result();
-$db->close();
+$stmt->bind_param($id, $content, $user_id, $upvotes, $downvotes, $category, $flagged);
 
-if (!$result) {
+if ( !($stmt->execute() ) {
 	// Result was false (error inserting into database)
 	echo "Error: Could not insert post into the database. Please try again later.";
 	exit
 } else {
-	echo "Yay! Thanks for joining";
+	echo "Woo! Your post was submitted! Thanks for contributing!";
 }
+
+// Close database
+$db->close();
 
 ?>
