@@ -1,0 +1,41 @@
+#create_account_table {
+	margin: 2em auto 0em auto;
+	box-shadow: 2em 2em 3em #626264;
+	border-radius: 2em;
+	padding: 2em;
+	border: 2px solid #626264;
+}
+
+#create_account_table td {
+	padding: .8em;
+	vertical-align: center;
+}
+
+#create_account_table caption {
+	padding: .8em;
+	font-weight: bold;
+	font-size: 3em;
+	text-shadow: .1em .1em .15em #626264;
+}
+
+#create_account_table label, #create_account_table input {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#submit {
+	padding: .2em .4em .2em .4em;
+}
+
+#no_pass_match {
+	color: #B30309;
+	padding-top: .5em;
+	font-weight: bold;
+	display: none;
+}
+
+textarea {
+	width: 100%;
+	font-size: 1.4em;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
