@@ -1,4 +1,4 @@
-<?p
+<?php
 
 // Try to connect to the database
 @ $db = new mysqli('localhost', 'team10', 'pear', 'team10');
@@ -16,7 +16,7 @@ $get_user_id_query = "select * from user where username =".$username.";";
 $user_id = $db->query($get_user_id_query)->fetch_assoc()['username']; /* This may be a problem */
 
 // Prepare query statement and execute it
-$create_user_query = "INSERT INTO post (id, content, user_id upvotes, downvotes, category, flagged) VALUES (?, ?, ?, ?, ?, ?, ?)"
+$create_user_query = "INSERT INTO post (id, content, user_id, upvotes, downvotes, category, flagged) VALUES (?, ?, ?, ?, ?, ?, ?)";
 $stmt = $db->prepare($create_user_query);
 
 // Assign the remaining variables for the insert statment
