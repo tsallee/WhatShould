@@ -32,7 +32,25 @@ function login() {
 	request.send("username=" + username + "&password=" + password);
 	request.onreadystatechange = function() {
 		if ( request.readyState == 4 && request.status == 200) {
-			alert(request.responseText);
+			var response = request.responseText;
+			if ( response == "valid" ) {
+				var headerLinks = document.getElementById("header_links");
+				headerLinks.innerHTML =
+				"<a class = \"header\" href = \"#\" onclick = \"topUsers()\">Top Users</a> | " +
+				"<a class = \"header\" href = \"createSuggestion.html\" target = \"_blank\">Create Suggestion</a> | " +
+				"<a class = \"header\" href = \"myAccount.html\" target = \"_blank\">" + username + "</a> | " +
+				"<a class = \"header\" href = \"#\" onclick = \"logout()\">Log Out</a>"
+				;
+			}
 		}
 	}
+}
+
+function logout() {
+	var headerLinks = document.getElementById("header_links");
+	headerLinks.innerHTML =
+	"<a class = \"header\" href = \"#\" onclick = \"topUsers()\">Top Users</a> | " +
+	"<a class = \"header\" href = \"createAccount.html\" target = \"_blank\">Create Account</a> | " +
+	"<a class = \"header\" href = \"#\" onclick = \"displayLogin()\">Log In</a>"
+	;
 }
