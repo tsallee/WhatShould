@@ -8,15 +8,21 @@ function displaySuggestion(type) {
 	request.onreadystatechange = function() {
 		if ( request.readyState == 4 && request.status == 200) {
 			var response = request.responseText;
+			var suggestionDiv = document.getElementById(type + "_div");
 			if ( response == "Error: Database Connection Failed.") {
-
+				suggestionDiv.fadeOut(300);
+				suggestionDiv.innerHTML =
+				"<p class = \"suggestion\">" + "We're sorry, we couldn't connect to the database. Please try again later." + "</p>";
+				suggestionDiv.fadeIn(300);
 			} else if ( response == "Query Failed" ) {
-
+				suggestionDiv.fadeOut(300);
+				suggestionDiv.innerHTML =
+				"<p class = \"suggestion\">" + "We're sorry, we couldn't find a suggestion. Please try again later." + "</p>";
+				suggestionDiv.fadeIn(300);
 			} else {
 				var responseArray = JSON.parse(response);
 				var id = responseArray[0];
 				var suggestion = responseArray[1];
-				var suggestionDiv = document.getElementById(type + "_div");
 				suggestionDiv.fadeOut(300);
 				suggestionDiv.innerHTML =
 				"<p class = \"suggestion\">" + suggestion + "</p>";
