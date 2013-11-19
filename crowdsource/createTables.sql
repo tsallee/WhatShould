@@ -2,11 +2,11 @@ USE team10;
 
 
 /* --- CODE TO RESET THE TABLES --- */
-/*
+
 SET FOREIGN_KEY_CHECKS = 0;
 drop table user, post, todo_list, user_voted_posts;
 SET FOREIGN_KEY_CHECKS =1;
-*/
+
 
 CREATE TABLE user(
 	id int unsigned not null auto_increment primary key,
@@ -26,6 +26,8 @@ CREATE TABLE post(
 	user_id int unsigned not null,
 	upvotes int not null,
 	downvotes int not null,
+	score int not null,
+	total_votes int not null,
 	category varchar(255) not null check (category = "day" || category = "year" || category = "life"),
 	flagged boolean not null,
 	foreign key (user_id) references user(id)
