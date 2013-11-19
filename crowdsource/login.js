@@ -1,3 +1,4 @@
+// Called on page load
 function load() {
 	$("#password").keyup(function(event) {
 	    if(event.keyCode == 13){
@@ -6,11 +7,13 @@ function load() {
 	});
 }
 
-function displayLogIn() {
+// Makes the login table visible
+function displayLogin() {
 	var loginTable = document.getElementById("login_table");
 	$(loginTable).fadeToggle(700);
 }
 
+// Processes the login of a user
 function login() {
 	var loginTable = document.getElementById("login_table");
 	$(loginTable).fadeOut(700);
@@ -18,6 +21,8 @@ function login() {
 	var passwordField = document.getElementById("login_password");
 	var username = usernameField.value;
 	var password = passwordField.value;
+
+	// Clear fields
 	usernameField.value = "";
 	passwordField.value = "";
 	var request = new XMLHttpRequest();
