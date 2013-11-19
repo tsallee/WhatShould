@@ -60,7 +60,7 @@ if ($quality_count > 4) {
 		// Give them a new post
 
 		// Get list ordered by ascending (lowest to highest) number of votes
-		$get_list_query = "select * from post where post.id not in (select post_id from user_voted_posts where user_id =".$user['id'].") order by total_votes asc";
+		$get_list_query = "select * from post where post.id not in (select post_id from user_voted_posts where user_id =".$user['id'].") and category = '".$type."' order by total_votes asc";
 		$new_list = $db->query($get_list_query);
 		$num_rows = $new_list->num_rows;
 		$random_number = rand(0,floor(0.2*$num_rows));
@@ -76,7 +76,7 @@ if ($quality_count > 4) {
 		$db->query($increment_new_count_query);
 
 		// Give them a random post
-		$get_suggestion_query = "select * from post where id >= (select floor( max(id) * rand()) from post) order by id limit 1;";
+		$get_suggestion_query = "select * from post where post.id not in (select post_id from user_voted_posts where user_id =".$user['id'].") and category = '".$type."' order by rand() limit 1;";
 		$post = $db->query($get_suggestion_pool_query)->fetch_assoc(); /* This may be a problem */
 	}
 }
