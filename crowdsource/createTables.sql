@@ -17,7 +17,7 @@ CREATE TABLE user(
 	currency int not null,
 	quality_count int not null,
 	new_count int not null,
-	unique (username) /* This may be a problem */
+	unique (username)
 );
 
 CREATE TABLE post(
