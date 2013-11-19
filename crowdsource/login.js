@@ -46,6 +46,7 @@ function login() {
 	}
 }
 
+// Logs the user out, returning to guest view mode
 function logout() {
 	var headerLinks = document.getElementById("header_links");
 	headerLinks.innerHTML =

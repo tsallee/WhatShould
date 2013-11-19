@@ -1,10 +1,24 @@
 <?php
 // Returns a suggestion array with the content and id of the suggestion. Returns false otherwise.
 
+$type = $_POST["type"];
+
+if ( $type == "day" ) {
+	// Code
+}
+
+if ( $type == "year" ) {
+	// Code
+}
+
+if ( $type == "life" ) {
+	// Code
+}
+
 // Try to connect to the database
 @ $db = new mysqli('localhost', 'team10', 'pear', 'team10');
 if (mysqli_connect_errno()) {
-	echo 'Error: Could not connect to database. Please try again later.';
+	echo 'Error: Database Connection Failed.';
 	exit;
 }
 
@@ -13,9 +27,9 @@ $get_suggestion_query = "select * from post where id >= (select floor( max(id) *
 $suggestion = $db->query($get_suggestion_pool_query)->fetch_assoc(); /* This may be a problem */
 
 if ($suggestion) {
-	return array($suggestion['content'], $suggestion['id']);
+	echo "[" . $suggestion['id'] . "," $suggestion['content'] . "]";
 } else {
-	return false;
+	echo "Query Failed";
 }
 
 ?>

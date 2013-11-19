@@ -9,6 +9,7 @@
 		<link rel = "stylesheet" type = "text/css" href = "style.css">
 		<link rel = "stylesheet" type = "text/css" href = "suggestion.css">
 		<script src = "login.js"></script>
+		<script src = "getGuestSuggestion.js"></script>
 		<script src = "jquery-1.10.2.min.js"></script>
 	</head>
 
@@ -45,12 +46,18 @@
 		</div>
 
 		<div id = "suggestion_box">
-			<p class = "suggestion">What Should I do...</p>
-			<a class = "suggestion" href = # onclick = "displaySuggestion('short')">Today?</a>
+			<p class = "suggestionTitle">What Should I do...</p>
+			<div id = "day_div">
+				<a class = "suggestionTitle" href = "#" onclick = "displaySuggestion('day')">Today?</a>
+			</div>
 			<br>
-			<a class = "suggestion" href = # onclick = "displaySuggestion('medium')">This year?</a>
+			<div id = "day_div">
+				<a class = "suggestionTitle" href = "#" onclick = "displaySuggestion('year')">This year?</a>
+			</div>
 			<br>
-			<a class = "suggestion" href = # onclick = "displaySuggestion('long')">Before I die?</a>
+			<div id = "day_div">
+				<a class = "suggestionTitle" href = "#" onclick = "displaySuggestion('life')">Before I die?</a>
+			</div>
 		</div>
 	</body>
 

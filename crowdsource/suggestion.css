@@ -9,16 +9,16 @@
 	text-transform: uppercase;
 }
 
-.suggestion {
+.suggestionTitle {
 	color: black;
 	text-shadow: .1em .1em .15em #626264;
 }
 
-p.suggestion {
+p.suggestionTitle {
 	font-size: 4.2em;
 }
 
-a.suggestion {
+a.suggestionTitle {
 	margin-left: 1.2em;
 	font-weight: bold;
 	line-height: 200%;
@@ -26,6 +26,11 @@ a.suggestion {
 	text-decoration: none;
 }
 
-a.suggestion:hover {
+a.suggestionTitle:hover {
 	color: #5C5C5C;
+}
+
+p.suggestion {
+	color: black;
+	font-size: 3em;
 }
