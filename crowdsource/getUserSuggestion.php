@@ -10,6 +10,7 @@ if (mysqli_connect_errno()) {
 
 // Get passed in values
 $username = $_POST['username'];
+$type = $_POST['type']
 
 // Get user information from database
 $get_user_query = "select * from user where username = ?";
@@ -28,7 +29,7 @@ if ($quality_count > 4) {
 	// Give them a quality post
 
 	// Get list ordered by score
-	$get_list_query = "select * from post where post.id not in (select post_id from user_voted_posts where user_id =".$user['id'].") order by score desc";
+	$get_list_query = "select * from post where post.id not in (select post_id from user_voted_posts where user_id =".$user['id'].") and category = '".$type."' order by score desc";
 	$quality_list = $db->query($get_list_query);
 	$num_rows = $quality_list->num_rows;
 	$random_number = rand(0,floor(0.2*$num_rows));
