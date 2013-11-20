@@ -17,6 +17,7 @@
 		// Prepare query statement and execute it
 		$get_user_query = "select password from user where username=?";
 		$stmt = $db->prepare($get_user_query);
+		
 		$stmt->bind_param("s", $username);
 		$stmt->bind_result($user_password);
 		if ( !($stmt->execute()) ) {
