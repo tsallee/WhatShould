@@ -28,23 +28,38 @@ function displaySuggestion(type) {
 				var responseArray = JSON.parse(response);
 				var id = responseArray[0];
 				var suggestion = responseArray[1];
+				var score = responseArray[2];
+				var scoreDisplay = score;
+				var scoreTd = document.getElementsByClassName("score");
+				if ( score > 0 ) {
+					scoreDisplay = "+" + score;
+				} else {
+					scoreDisplay = score;
+				}
 				suggestionDiv.innerHTML =
 				"<table>" +
 					"<tr>" +
-						"<td class = \"score\">" +  + "</td>" +
+						"<td class = \"score\">" + scoreDisplay + "</td>" +
 						"<td><p class = \"suggestion\">" + suggestion + "</p></td>" +
 						"<td class = \"suggestionButtons\">" +
 							"<table>" +
 								"<tr>" +
-									"<td class = \"thumbUp\"><a href = \"#\">&nbsp;</a></td>" +
-									"<td class = \"thumbDown\"><a href = \"#\">&nbsp;</a></td>" +
-									"<td class = \"skip\" onclick = \"displaySuggestion('" + type + "')\"><a href = \"#\">&nbsp;</a></td>" +
+									"<td class = \"thumbUp\">&nbsp;</td>" +
+									"<td class = \"thumbDown\">&nbsp;</td>" +
+									"<td class = \"skip\" onclick = \"displaySuggestion('" + type + "')\">&nbsp;</td>" +
 								"</tr>" +
 							"</table>" +
 							"</td>" +
 					"</tr>" +
 				"</table>"
-				;			
+				;
+				if ( score < 0 ) {
+					scoreTd[0].style.color = "#610B21";
+				} else if ( score > 0 ) {
+					scoreTd[0].style.color = "#0B460C";
+				} else {
+					scoreTd[0].style.color = "#3C4758";
+				}
 			}
 			// Display the suggestion
 			$(suggestionDiv).fadeIn(300);
