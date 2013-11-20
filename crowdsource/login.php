@@ -2,8 +2,6 @@
 	// get the query parameter from URL
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	
-
 
 	echo validate_login($username, $password);
 
@@ -17,8 +15,8 @@
 		}
 
 		// Prepare query statement and execute it
-		$get_user_query = "select * from user where username = ?";
-		$stmt = $db->prepare($get_user_query);
+		$get_user_password_query = "select password from user where username = ?";
+		$stmt = $db->prepare($get_user_password_query);
 		$stmt->bind_param("s", $username);
 		$stmt->bind_result($user);
 		if ( !($stmt->execute()) ) {
