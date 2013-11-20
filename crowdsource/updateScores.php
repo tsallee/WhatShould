@@ -55,7 +55,5 @@
 
 		$update_user_score_query = "update user set score=".$new_score." where user_id = ".$user_id;
 		$db->query($update_user_score_query);
-
-		//
 	}
 ?>
