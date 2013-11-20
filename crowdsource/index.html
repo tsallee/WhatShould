@@ -28,10 +28,10 @@
 						<label>Username:</label>
 					</td>
 					<td>
-						<input id = "login_username">
+						<input id = "login_username" tabindex = 1>
 					</td>
 					<td rowspan = 2>
-						<a class = "goButton" href = # onclick = "login()">Go</a>
+						<a class = "goButton" href = # onclick = "login()" tabindex = 3>Go</a>
 					</td>
 				</tr>
 				<tr>
@@ -39,7 +39,7 @@
 						<label>Password:</label>
 					</td>
 					<td>
-						<input type = "password" id = "login_password">
+						<input type = "password" id = "login_password" tabindex = 2>
 					</td>
 				</tr>
 			</table>
@@ -48,15 +48,15 @@
 		<div id = "suggestion_box">
 			<p class = "suggestionTitle">What Should I do...</p>
 			<div id = "day_div">
-				<a class = "suggestionTitle" href = "#" onclick = "displaySuggestion('day')">Today?</a>
+				<a class = "suggestionTitle" href = "#" onclick = "displaySuggestion('day'); return false;">Today?</a>
 			</div>
 			<br>
-			<div id = "day_div">
-				<a class = "suggestionTitle" href = "#" onclick = "displaySuggestion('year')">This year?</a>
+			<div id = "year_div">
+				<a class = "suggestionTitle" href = "#" onclick = "displaySuggestion('year'); return false;">This year?</a>
 			</div>
 			<br>
-			<div id = "day_div">
-				<a class = "suggestionTitle" href = "#" onclick = "displaySuggestion('life')">Before I die?</a>
+			<div id = "life_div">
+				<a class = "suggestionTitle" href = "#" onclick = "displaySuggestion('life'); return false;">Before I die?</a>
 			</div>
 		</div>
 	</body>
