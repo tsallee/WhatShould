@@ -44,8 +44,8 @@ function displaySuggestion(type) {
 						"<td class = \"suggestionButtons\">" +
 							"<table>" +
 								"<tr>" +
-									"<td class = \"thumbUp\">&nbsp;</td>" +
-									"<td class = \"thumbDown\">&nbsp;</td>" +
+									"<td class = \"thumbUp\" onclick = \"updateScore(" + id + "," + "'guest'," + 'up'")\">&nbsp;</td>" +
+									"<td class = \"thumbDown\" onclick = \"updateScore(" + id + "," + "'guest'," + 'down'")\">&nbsp;</td>" +
 									"<td class = \"skip\" onclick = \"displaySuggestion('" + type + "')\">&nbsp;</td>" +
 								"</tr>" +
 							"</table>" +
@@ -54,9 +54,9 @@ function displaySuggestion(type) {
 				"</table>"
 				;
 				if ( score < 0 ) {
-					scoreTd[0].style.color = "#610B21";
+					scoreTd[0].style.color = "#C10202";
 				} else if ( score > 0 ) {
-					scoreTd[0].style.color = "#0B460C";
+					scoreTd[0].style.color = "#00A703";
 				} else {
 					scoreTd[0].style.color = "#3C4758";
 				}
