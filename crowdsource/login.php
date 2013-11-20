@@ -15,25 +15,26 @@
 		}
 
 		// Prepare query statement and execute it
-		$get_user_password_query = "select password from user where username = ?";
-		$stmt = $db->prepare($get_user_password_query);
+		$get_user_query = "select password from user where username=?";
+		$stmt = $db->prepare($get_user_query);
+		
 		$stmt->bind_param("s", $username);
-		$stmt->bind_result($user);
+		$stmt->bind_result($user_password);
 		if ( !($stmt->execute()) ) {
 			// Close database
 			$db->close();
 			// Result was false (error with query)
-			return "invalid"
+			return "invalid";
 		}
-		$stmt->fetch_assoc();
+		$stmt->fetch();
 		$stmt->free_result();
 		// Close database
 		$db->close();
 
-		if ($user['password'] == md5($password)) {
-			return "valid"
+		if ($user_password == md5($password)) {
+			return "valid";
 		} else {
-			return "invalid"
+			return "invalid";
 		}
 
 	}

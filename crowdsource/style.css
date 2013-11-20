@@ -1,6 +1,6 @@
 html, body {
 	width: 100%;
-	height: 100%; 
+	height: 100%;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
@@ -42,7 +42,11 @@ div.serverMessage a:hover {
 
 #login_table td {
 	text-align: right;
-	padding: .3em .5em .3em .5em;
+	padding: .3em 1.5em .3em 1.5em;
+}
+
+#login_error {
+	display: none;
 }
 
 #header_bar {

@@ -44,7 +44,7 @@
 			// Bind the parameters to the query
 			$stmt->bind_param("isssiiii", $id, $username, $password, $email, $score, $currency, $quality_count, $new_count);
 
-			NULLif ( !($stmt->execute()) ) {
+			if ( !($stmt->execute()) ) {
 				// Result was false (error inserting into database)
 				echo
 					"<div class = \"serverMessage\">" .
