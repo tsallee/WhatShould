@@ -38,8 +38,8 @@
 			$id = NULL;
 			$score = 0;
 			$currency = 20;
-			$quality_count = 0;
-			$new_count = 0;
+			$quality_count = 5;
+			$new_count = 3;
 
 			// Bind the parameters to the query
 			$stmt->bind_param("isssiiii", $id, $username, $password, $email, $score, $currency, $quality_count, $new_count);

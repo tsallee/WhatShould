@@ -14,6 +14,7 @@ if (mysqli_connect_errno()) {
 $get_suggestion_query = "select * from post where category = '".$type."' order by rand() limit 1;";
 $suggestion = $db->query($get_suggestion_query)->fetch_assoc();
 
+
 if ($suggestion) {
 	echo "[\"" . $suggestion['id'] . "\",\"" . $suggestion['content'] . "\"]";
 } else {
