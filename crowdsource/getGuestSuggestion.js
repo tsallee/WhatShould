@@ -18,23 +18,33 @@ function displaySuggestion(type) {
 			if ( response == "Error: database connection failed.") {
 				// Display appropriate message
 				suggestionDiv.innerHTML =
-				"<p class = \"suggestion\">" + "We're sorry, we couldn't connect to the database. Please try again later." + "</p>";
+				"<p class = \"suggestion\">" + "We're sorry, we couldn't connect to the database. Please try again later.</p>";
 			
 			} else if ( response == "Query Failed" ) {
 				// Display appropriate message
 				suggestionDiv.innerHTML =
-				"<p class = \"suggestion\">" + "We're sorry, we couldn't find a suggestion right now. Please try again later." + "</p>";
-			
+				"<p class = \"suggestion\">" + "We're sorry, we couldn't find a suggestion right now. Please try again later.</p>";
 			} else {
-				
 				var responseArray = JSON.parse(response);
 				var id = responseArray[0];
 				var suggestion = responseArray[1];
 				suggestionDiv.innerHTML =
-				"<div class = upArrow></div>" +
-				"<p class = \"suggestion\">" + suggestion + "</p>" +
-				"<div class = downArrow></div>";
-			
+				"<table>" +
+					"<tr>" +
+						"<td class = \"score\">" +  + "</td>" +
+						"<td><p class = \"suggestion\">" + suggestion + "</p></td>" +
+						"<td class = \"suggestionButtons\">" +
+							"<table>" +
+								"<tr>" +
+									"<td class = \"thumbUp\"><a href = \"#\">&nbsp;</a></td>" +
+									"<td class = \"thumbDown\"><a href = \"#\">&nbsp;</a></td>" +
+									"<td class = \"skip\" onclick = \"displaySuggestion('" + type + "')\"><a href = \"#\">&nbsp;</a></td>" +
+								"</tr>" +
+							"</table>" +
+							"</td>" +
+					"</tr>" +
+				"</table>"
+				;			
 			}
 			// Display the suggestion
 			$(suggestionDiv).fadeIn(300);

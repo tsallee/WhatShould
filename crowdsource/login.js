@@ -29,7 +29,6 @@ function login() {
 	request.onreadystatechange = function() {
 		if ( request.readyState == 4 && request.status == 200) {
 			var response = request.responseText;
-			alert(response);
 			if ( response == "valid" ) {
 				var headerLinks = document.getElementById("header_links");
 				headerLinks.innerHTML =
@@ -43,7 +42,9 @@ function login() {
 				passwordField.value = "";
 				$(loginTable).fadeOut(700);
 			} else if ( response == "invalid" ) {
-				loginTable.innerHTML += "<tr><td colspan = 3>Username or password is incorrect</td></tr>";
+				loginTable.innerHTML += "<tr id = \"login_error\"><td style = \"text-align: center\" colspan = 3>Username or password is incorrect</td></tr>";
+				$("#login_error").fadeIn(300);
+				setTimeout(function() { $("#login_error").fadeOut(700) }, 1000);
 			} else {
 				loginTable.innerHTML += "<tr><td colspan = 3>Error: couldn't query database.</td></tr>";
 			}
