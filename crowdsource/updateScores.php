@@ -56,6 +56,8 @@
 			$db->query($new_seen_post_query);
 		}
 
+		////////////// TODO: USER SCORE DOES NOT UPDATE PROPERLY
+
 		// get post author
 		$get_post_author_query = "select user_id from post where id = ".$post_id;
 		$author_id = $db->query($get_post_author_query)->fetch_assoc();
