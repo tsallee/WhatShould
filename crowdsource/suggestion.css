@@ -38,7 +38,7 @@ a.suggestionTitle:hover {
 }
 
 p.suggestion {
-	font-size: 2em;
+	font-size: 2.3em;
 	line-height: 150%;
 	text-decoration: none;
 	width: 100%;
@@ -91,6 +91,6 @@ p.suggestion {
 .score {
 	padding: 0 1em 0 0;
 	width: 6em;
-	font-size: 1.7em;
+	font-size: 2em;
 	font-weight: bold;
 }

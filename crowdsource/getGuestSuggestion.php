@@ -16,7 +16,7 @@ $suggestion = $db->query($get_suggestion_query)->fetch_assoc();
 
 
 if ($suggestion) {
-	echo "[\"" . $suggestion['id'] . "\",\"" . $suggestion['content'] . "\"]";
+	echo "[\"" . $suggestion['id'] . "\",\"" . $suggestion['content'] . "\",\"" . $suggestion['score'] . "\"]";
 } else {
 	echo "Query Failed";
 }
