@@ -27,12 +27,13 @@ function displaySuggestion(type) {
 			
 			} else {
 				
-				alert(response);
 				var responseArray = JSON.parse(response);
 				var id = responseArray[0];
 				var suggestion = responseArray[1];
 				suggestionDiv.innerHTML =
-				"<p class = \"suggestion\">" + suggestion + "</p>";
+				"<div class = upArrow></div>" +
+				"<p class = \"suggestion\">" + suggestion + "</p>" +
+				"<div class = downArrow></div>";
 			
 			}
 			// Display the suggestion

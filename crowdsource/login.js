@@ -1,6 +1,6 @@
 // Called on page load
 function load() {
-	$("#password").keyup(function(event) {
+	$("#login_password").keyup(function(event) {
 	    if(event.keyCode == 13){
 	        login();
 	    }
