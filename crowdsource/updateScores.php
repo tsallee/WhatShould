@@ -4,9 +4,17 @@
 	$username = $_POST['username'];	// "guest" for guest
 	$action = $_POST['action'];	// Either "up" or "down"
 
-	echo validate_login($post_id, $username, $action);
+	echo update_scores($post_id, $username, $action);
 
-	function updateScores($post_id, $username, $action) {
+	function update_scores($post_id, $username, $action) {
+
+		// Try to connect to the database
+		@ $db = new mysqli('localhost', 'team10', 'pear', 'team10');
+		if (mysqli_connect_errno()) {
+			echo 'Error: database connection failed.';
+			exit;
+		}
+
 
 		// get user_id
 		if ($username != "guest") {
@@ -40,7 +48,7 @@
 
 		// update post in database
 		$update_post_query = "update post set upvotes=".$upvotes.", downvotes=".$downvotes.", score=".$score.", total_votes=".$total_votes." where id = ".$post_id;
-		$db->query($reset_quality_count_query);
+		$db->query($update_post_query);
 
 		// update users seen posts 
 		if ($username != "guest") {
@@ -59,7 +67,7 @@
 
 		$new_score = 0;
 
-		for (i = 0; i < $num_rows; i++) {
+		for ($i = 0; $i < $num_rows; $i++) {
 			$post = $user_posts->fetch_assoc();
 			$new_score += $post['score'];
 		}

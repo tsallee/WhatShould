@@ -44,8 +44,8 @@ function displaySuggestion(type) {
 						"<td class = \"suggestionButtons\">" +
 							"<table>" +
 								"<tr>" +
-									"<td class = \"thumbUp\" onclick = \"updateScore(" + id + "," + "'guest'," + 'up'")\">&nbsp;</td>" +
-									"<td class = \"thumbDown\" onclick = \"updateScore(" + id + "," + "'guest'," + 'down'")\">&nbsp;</td>" +
+									"<td class = \"thumbUp\" onclick = \"updateScore(" + id + "," + "'guest'," + "'up')\">&nbsp;</td>" +
+									"<td class = \"thumbDown\" onclick = \"updateScore(" + id + "," + "'guest'," + "'down')\">&nbsp;</td>" +
 									"<td class = \"skip\" onclick = \"displaySuggestion('" + type + "')\">&nbsp;</td>" +
 								"</tr>" +
 							"</table>" +
