@@ -291,5 +291,16 @@ insert into user_voted_posts values (109,3);
 insert into user_voted_posts values (110,3);
 
 
-
+/* Fake todo list */
+insert into todo_list values(1, 1, false, NULL);
+insert into todo_list values(2, 1, false, NULL);
+insert into todo_list values(3, 1, false, NULL);
+insert into todo_list values(4, 1, false, NULL);
+insert into todo_list values(5, 1, false, NULL);
+insert into todo_list values(6, 1, false, NULL);
+insert into todo_list values(7, 1, false, NULL);
+insert into todo_list values(8, 1, false, NULL);
+insert into todo_list values(9, 1, false, NULL);
+insert into todo_list values(10, 1, false, NULL);
+insert into todo_list values(11, 1, false, NULL);
 

@@ -36,6 +36,7 @@ function displaySuggestion(type) {
 				} else {
 					scoreDisplay = score;
 				}
+				// NEED TO PASS IN USERNAME TO UPDATESCORE IF LOGGED IN. WE WILL NEED TO THEN TEST IT TO MAKE SURE THE RIGHT SUGGESTIONS ARE GIVEN
 				suggestionDiv.innerHTML =
 				"<table>" +
 					"<tr>" +

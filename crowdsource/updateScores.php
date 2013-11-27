@@ -56,25 +56,15 @@
 			$db->query($new_seen_post_query);
 		}
 
-		////////////// TODO: USER SCORE DOES NOT UPDATE PROPERLY
-
 		// get post author
 		$get_post_author_query = "select user_id from post where id = ".$post_id;
 		$author_id = $db->query($get_post_author_query)->fetch_assoc();
 
 		// update user score
-		$get_user_posts_query = "select score from post where user_id = ".$author_id['user_id'];
-		$user_posts = $db->query($get_user_posts_query);
-		$num_rows = $user_posts->num_rows;
+		$new_score_query = "select sum(score) from post where user_id = ".$author_id['user_id'];
+		$new_score = $db->query($new_score_query)->fetch_assoc();
 
-		$new_score = 0;
-
-		for ($i = 0; $i < $num_rows; $i++) {
-			$post = $user_posts->fetch_assoc();
-			$new_score += $post['score'];
-		}
-
-		$update_user_score_query = "update user set score=".$new_score." where user_id = ".$author_id['user_id'];
+		$update_user_score_query = "update user set score=".$new_score['sum(score)']." where id = ".$author_id['user_id'];
 		$db->query($update_user_score_query);
 	}
 ?>
