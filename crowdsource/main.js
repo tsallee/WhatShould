@@ -6,9 +6,9 @@ function loadPage() {
 	setEnterCapability();
 	var body = document.getElementsByTagName("body")[0];
 	window.onresize = function(event) {
-		body.style.fontSize = window.innerHeight/70 + "pt";
+		body.style.fontSize = window.innerHeight/75 + "pt";
 	}
-	body.style.fontSize = window.innerHeight/70 + "pt";
+	body.style.fontSize = window.innerHeight/75 + "pt";
 	setUserName();
 	if ( currentUser != "guest" ) {
 		displayMemberLinks(username);
@@ -19,6 +19,7 @@ function loadPage() {
 // they log out, which keeps track of their username so it can be used in
 // all the pages on our site.
 function dropCookie(username) {
+	currentUser = username;
 	var c_name = cookieName;
 	var c_value = username;
 	var exdays = 100;
@@ -31,6 +32,7 @@ function dropCookie(username) {
 // Removes the "what_should_cookie" from the user's browser
 function deleteCookie() {
     document.cookie = cookieName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    currentUser = "guest";
 };
 
 // If the user has our cookie on their browser, this function will extract

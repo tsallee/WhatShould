@@ -44,11 +44,7 @@
 				$stmt = $db->prepare($update_todo_list_query);
 				$stmt->bind_param("ii", $post_id, $user_id);
 				if (!$stmt->execute()) {
-					echo
-						"<p class = \"suggestion\">" .
-							"Error: Post could not be added to your to-do list. Please try again later." .
-						"</p>";
-						exit;
+					return "<p class = \"suggestion\">Error: Post could not be added to your to-do list. Please try again later.</p>";
 				}
 			}
 		}
@@ -85,7 +81,7 @@
 		// update user score
 		$new_score_query = "select sum(score) from post where user_id = ?";
 		$stmt = $db->prepare($new_score_query);
-		$stmt->bind_param("i", $author_id['user_id'];
+		$stmt->bind_param("i", $author_id);
 		$stmt->bind_result($new_score);
 		$stmt->execute();
 		$stmt->fetch();
@@ -93,7 +89,11 @@
 
 		$update_user_score_query = "update user set score = ? where id = ?";
 		$stmt = $db->prepare($update_user_score_query);
-		$stmt->bind_param("ii", $new_score['sum(score)'], $author_id['user_id']);
+		$stmt->bind_param("ii", $new_score, $author_id);
 		$stmt->execute();
+
+		if ($username != "guest") {
+			return "<p class = \"suggestion\">This suggestion was added to your to-do list on your account page.</p>";
+		}
 	}
 ?>
