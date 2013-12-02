@@ -10,7 +10,7 @@ function checkFields() {
 	if ( username == "" ) {
 		var userErrDiv = document.getElementById("no_username");
 		$(userErrDiv).slideDown(600);
-		setTimeout(function() { $(userErrDiv).slideToggle(600); }, 3000);
+		setTimeout(function() { $(userErrDiv).slideToggle(600); }, 2000);
 		userErrDiv.value = "";
 		return;
 	}
@@ -18,7 +18,7 @@ function checkFields() {
 	if ( password == "" ) {
 		var passErrDiv = document.getElementById("no_password");
 		$(passErrDiv).slideDown(600);
-		setTimeout(function() { $(passErrDiv).slideToggle(600); }, 3000);
+		setTimeout(function() { $(passErrDiv).slideToggle(600); }, 2000);
 		passErrDiv.value = "";
 		return;
 	}
@@ -26,11 +26,46 @@ function checkFields() {
 	if ( password != confirmPassword ) {
 		var passErrDiv = document.getElementById("no_pass_match");
 		$(passErrDiv).slideDown(600);
-		setTimeout(function() { $(passErrDiv).slideToggle(600); }, 3000);
+		setTimeout(function() { $(passErrDiv).slideToggle(600); }, 2000);
 		password.value = "";
 		confirmPassword.value = "";
 		return;
 	}
+
+	if ( email == "" ) {
+		var emailErrDiv = document.getElementById("no_email");
+		$(emailErrDiv).slideDown(600);
+		setTimeout(function() { $(emailErrDiv).slideToggle(600); }, 2000);
+		emailErrDiv.value = "";
+		return;
+	}
+
+	if ( daySuggestion == "" ) {
+		var dayErrDiv = document.getElementById("no_day_suggestion");
+		$(dayErrDiv).slideDown(600);
+		setTimeout(function() { $(dayErrDiv).slideToggle(600); }, 2000);
+		dayErrDiv.value = "";
+		return;
+	}
+
+	if ( yearSuggestion == "" ) {
+		var yearErrDiv = document.getElementById("no_year_suggestion");
+		$(yearErrDiv).slideDown(600);
+		setTimeout(function() { $(yearErrDiv).slideToggle(600); }, 2000);
+		yearErrDiv.value = "";
+		return;
+	}
+
+	if ( lifeSuggestion == "" ) {
+		var lifeErrDiv = document.getElementById("no_life_suggestion");
+		$(lifeErrDiv).slideDown(600);
+		setTimeout(function() { $(lifeErrDiv).slideToggle(600); }, 2000);
+		lifeErrDiv.value = "";
+		return;
+	}
+
+	saveAccount(username, password, email, daySuggestion, yearSuggestion, lifeSuggestion);
+
 }
 
 function createAccount() {
@@ -50,20 +85,21 @@ function createAccount() {
 	}
 }
 
-function saveUserAccount() {
-	var username = document.getElementById("create_username");
-	var password = document.getElementById("create_password");
-	var email = document.getElementById("create_email");
+function closeAccountPopup() {
+	$("#create_account_div").fadeOut(600);
+}
+
+function saveAccount(username, password, email, daySuggestion, yearSuggestion, lifeSuggestion) {
 	var request = new XMLHttpRequest();
 	var url = "http://luna.mines.edu/csci_445/2013_fall/team10/crowdsource/createAccount.php";
 	request.open("POST", url, true);
 	request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	request.send("username=" + username + "&password=" + password + "&email=" + email);
+	request.send("username=" + username + "&password=" + password + "&email=" + email + "&day=" + daySuggestion + "&year=" + yearSuggestion + "&life=" + lifeSuggestion);
 	request.onreadystatechange = function() {
 		if ( request.readyState == 4 && request.status == 200) {
 			// Get the response from the server
 			var response = request.responseText;
-			var createAccountDiv = document.getElementById("create_account_div");
+			var createAccountDiv = document.getElementById("create_account_form");
 			createAccountDiv.innerHTML = response;
 			$(createAccountDiv).fadeIn(600);
 		}

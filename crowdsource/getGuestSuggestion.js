@@ -45,8 +45,8 @@ function displaySuggestion(type) {
 						"<td class = \"suggestionButtons\">" +
 							"<table>" +
 								"<tr>" +
-									"<td class = \"thumbUp\" onclick = \"updateScore(" + id + "," + "'guest'," + "'up')\">&nbsp;</td>" +
-									"<td class = \"thumbDown\" onclick = \"updateScore(" + id + "," + "'guest'," + "'down')\">&nbsp;</td>" +
+									"<td class = \"thumbUp\" onclick = \"updateScore(" + id + "," + "'guest'," + "'up'); upVote('" + type + "');\">&nbsp;</td>" +
+									"<td class = \"thumbDown\" onclick = \"updateScore(" + id + "," + "'guest'," + "'down'); downVote('" + type + "');\">&nbsp;</td>" +
 									"<td class = \"skip\" onclick = \"displaySuggestion('" + type + "')\">&nbsp;</td>" +
 								"</tr>" +
 							"</table>" +
@@ -62,9 +62,34 @@ function displaySuggestion(type) {
 					scoreTd[0].style.color = "#3C4758";
 				}
 			}
+
+			var dayDiv = document.getElementById("day_div");
+			var yearDiv = document.getElementById("year_div");
+			var lifeDiv = document.getElementById("life_div");
+			
+			if ( type == "day" ) {
+				yearDiv.innerHTML = "<a class = \"suggestionTitle\" href = \"#\" onclick = \"displaySuggestion('year'); return false;\">This Year?</a>";
+				lifeDiv.innerHTML = "<a class = \"suggestionTitle\" href = \"#\" onclick = \"displaySuggestion('life'); return false;\">Before I Die?</a>";
+			} else if ( type == "year" ) {
+				dayDiv.innerHTML = "<a class = \"suggestionTitle\" href = \"#\" onclick = \"displaySuggestion('day'); return false;\">Today?</a>";
+				lifeDiv.innerHTML = "<a class = \"suggestionTitle\" href = \"#\" onclick = \"displaySuggestion('life'); return false;\">Before I Die?</a>";
+			} else if ( type == "life" ) {
+				dayDiv.innerHTML = "<a class = \"suggestionTitle\" href = \"#\" onclick = \"displaySuggestion('day'); return false;\">Today?</a>";
+				yearDiv.innerHTML = "<a class = \"suggestionTitle\" href = \"#\" onclick = \"displaySuggestion('year'); return false;\">This Year?</a>";
+			}
 			// Display the suggestion
 			$(suggestionDiv).fadeIn(300);
 		}
 	}
 
+}
+
+// Called when the suggestion gets upvoted (a thumbs up)
+function upVote(type) {
+	alert(type);
+}
+
+// Called when the suggestion gets downvoted (a thumbs down)
+function downVote(type) {
+	alert(type);
 }

@@ -8,7 +8,7 @@
 	display: none;
 }
 
-#create_account_div div {
+#create_account_form {
 	border-radius: 2em;
 	padding: 3em;
 	text-align: left;
@@ -68,7 +68,8 @@
 	background: white;
 }
 
-#no_user, #no_password, #no_pass_match, #no_day_suggestion, #no_year_suggestion, #no_life_suggestion {
+#no_username, #no_password, #no_email, #no_pass_match, #no_day_suggestion, #no_year_suggestion, #no_life_suggestion {
+	position: static;
 	color: #B30309;
 	padding-top: .5em;
 	font-weight: bold;

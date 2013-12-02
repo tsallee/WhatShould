@@ -1,4 +1,4 @@
-<div>
+<div id = "create_account_form">
 	<table id = "create_account_table">
 		<caption>Create Account</caption>
 		<tr>
@@ -8,17 +8,6 @@
 			<td>
 				<input id = "create_username" autofocus>
 				<div id = "no_username">
-					You must fill out this field!
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Email:<label>
-			</td>
-			<td>
-				<input id = "create_email" type = "email">
-				<div id = "no_email">
 					You must fill out this field!
 				</div>
 			</td>
@@ -46,28 +35,39 @@
 			</td>
 		</tr>
 		<tr>
+			<td>
+				<label>Email:<label>
+			</td>
+			<td>
+				<input id = "create_email" type = "email">
+				<div id = "no_email">
+					You must fill out this field!
+				</div>
+			</td>
+		</tr>
+		<tr>
 			<td colspan = 2>
 				<textarea id = "create_day_suggestion" maxlength = 169 placeholder = "Enter a suggestion that someone could do today" required></textarea>
-			</td>
-			<div id = "no_day_suggestion">
+				<div id = "no_day_suggestion">
 				You must fill out this field!
-			</div>
+				</div>
+			</td>
 		</tr>
 		<tr>
 			<td colspan = 2>
 				<textarea id = "create_year_suggestion" maxlength = 169 placeholder = "Enter a suggestion that someone could do this year" required></textarea>
-			</td>
-			<div id = "no_year_suggestion">
+				<div id = "no_year_suggestion">
 				You must fill out this field!
-			</div>
+				</div>
+			</td>
 		</tr>
 		<tr>
 			<td colspan = 2>
 				<textarea id = "create_life_suggestion" maxlength = 169 placeholder = "Enter a suggestion that someone could do before they die" required></textarea>
-			</td>
-			<div id = "no_life_suggestion">
+				<div id = "no_life_suggestion">
 				You must fill out this field!
-			</div>
+				</div>
+			</td>
 		</tr>
 		<tr>
 			<td colspan = 2 style = "text-align: center">
