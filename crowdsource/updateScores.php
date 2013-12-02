@@ -15,7 +15,6 @@
 			exit;
 		}
 
-
 		// get user_id
 		if ($username != "guest") {
 			$user_id_query = "select id from user where username = ?";

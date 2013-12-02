@@ -91,5 +91,5 @@ function upVote(type) {
 
 // Called when the suggestion gets downvoted (a thumbs down)
 function downVote(type) {
-	alert(type);
+	displaySuggestion(type);
 }
