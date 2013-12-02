@@ -23,14 +23,14 @@
 	$check_user_name_query = "select id from user where username = ?";
 	$stmt = $db->prepare($check_user_name_query);
 	$stmt->bind_param("s", $username);
-	$stmt->bind_result($check_user_name_query_result);
 	$stmt->execute();
-	$stmt->fetch_assoc();
+	$stmt->bind_result($check_user_name_query_result);
+	$stmt->fetch();
 	$stmt->free_result();
 
-	$num_rows = $check_user_name_query_result->num_rows;
+	$check_user_name_query_result;
 
-	if ($num_rows > 0) {
+	if ($check_user_name_query_result != null) {
 		echo
 			"<div class = \"serverMessage\">" .
 				"We're sorry, the username '".$username."' has already been taken.<br>" .
@@ -80,15 +80,13 @@
 
 	function submit_post($username, $content, $category, $db) {
 
-		$get_user_id_query = "select * from user where username = ?";
+		$get_user_id_query = "select id from user where username = ?";
 		$stmt = $db->prepare($get_user_id_query);
 		$stmt->bind_param("s", $username);
-		$stmt->bind_result($user_query_result);
+		$stmt->bind_result($user_id);
 		$stmt->execute();
-		$stmt->fetch_assoc();
+		$stmt->fetch();
 		$stmt->free_result();
-
-		$user_id = $user_query_result['id'];
 
 		// Prepare query statement and execute it
 		$create_user_query = "INSERT INTO post (id, content, user_id, upvotes, downvotes, score, total_votes, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";

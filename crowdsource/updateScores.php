@@ -22,7 +22,7 @@
 			$stmt->bind_param("s", $username);
 			$stmt->bind_result($user_id);
 			$stmt->execute();
-			$stmt->fetch_assoc();
+			$stmt->fetch();
 			$stmt->free_result();
 		}
 
@@ -30,14 +30,10 @@
 		$get_post_query = "select upvotes, downvotes from post where id = ?";
 		$stmt = $db->prepare($get_post_query);
 		$stmt->bind_param("i", $post_id);
-		$stmt->bind_result($post_info);
+		$stmt->bind_result($upvotes, $downvotes);
 		$stmt->execute();
-		$stmt->fetch_assoc();
+		$stmt->fetch();
 		$stmt->free_result();
-
-		// update values
-		$upvotes = $post_info['upvotes'];
-		$downvotes = $post_info['downvotes'];
 
 		if ($action == "up") {
 			$upvotes += 1;
@@ -49,10 +45,9 @@
 				$stmt->bind_param("ii", $post_id, $user_id);
 				if (!$stmt->execute()) {
 					echo
-						"<div class = \"serverMessage\">" .
-							"Error: Post could not be added to your to-do list. Please try again later.<br>" .
-							"<a class = \"serverMessage\" href = \"#\" onclick = \"closeAccountPopup()\">Return to Home</a>" .
-						"</div>";
+						"<p class = \"suggestion\">" .
+							"Error: Post could not be added to your to-do list. Please try again later." .
+						"</p>";
 						exit;
 				}
 			}
@@ -84,7 +79,7 @@
 		$stmt->bind_param("i", $post_id);
 		$stmt->bind_result($author_id);
 		$stmt->execute();
-		$stmt->fetch_assoc();
+		$stmt->fetch();
 		$stmt->free_result();
 
 		// update user score
@@ -93,7 +88,7 @@
 		$stmt->bind_param("i", $author_id['user_id'];
 		$stmt->bind_result($new_score);
 		$stmt->execute();
-		$stmt->fetch_assoc();
+		$stmt->fetch();
 		$stmt->free_result();
 
 		$update_user_score_query = "update user set score = ? where id = ?";
