@@ -6,7 +6,7 @@ $type = $_POST["type"];
 // Try to connect to the database
 @ $db = new mysqli('localhost', 'team10', 'pear', 'team10');
 if (mysqli_connect_errno()) {
-	echo 'Error: database connection failed.';
+	echo "Error: database connection failed.";
 	exit;
 }
 

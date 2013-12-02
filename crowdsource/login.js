@@ -31,17 +31,13 @@ function login() {
 		if ( request.readyState == 4 && request.status == 200) {
 			var response = request.responseText;
 			if ( response == "valid" ) {
-				var headerLinks = document.getElementById("header_links");
-				headerLinks.innerHTML =
-				"<a class = \"header\" href = \"#\" onclick = \"topUsers()\">Top Users</a> | " +
-				"<a class = \"header\" href = \"createSuggestion.html\" target = \"_blank\">Create Suggestion</a> | " +
-				"<a class = \"header\" href = \"myAccount.html\" target = \"_blank\">" + username + "</a> | " +
-				"<a class = \"header\" href = \"#\" onclick = \"logout()\">Log Out</a>"
-				;
+				displayMemberLinks(username);
 				// Clear fields
 				usernameField.value = "";
 				passwordField.value = "";
 				$(loginTable).fadeOut(700);
+				// Set a cookie on the user's browser so we remember them in the future.
+				dropCookie(username);
 			} else if ( response == "invalid" ) {
 				loginTable.innerHTML += "<tr id = \"login_error\"><td style = \"text-align: center\" colspan = 3>Username or password is incorrect</td></tr>";
 				$("#login_error").fadeIn(300);
@@ -54,6 +50,17 @@ function login() {
 	}
 }
 
+// Changes the links in the upper right corner to those specific to site members (those with logins)
+function displayMemberLinks(username) {
+	var headerLinks = document.getElementById("header_links");
+	headerLinks.innerHTML =
+	"<a class = \"header\" href = \"#\" onclick = \"topUsers()\">Top Users</a> | " +
+	"<a class = \"header\" href = \"createSuggestion.html\" target = \"_blank\">Create Suggestion</a> | " +
+	"<a class = \"header\" href = \"myAccount.html\" target = \"_blank\">" + username + "</a> | " +
+	"<a class = \"header\" href = \"#\" onclick = \"logout()\">Log Out</a>"
+	;
+}
+
 // Logs the user out, returning to guest view mode
 function logout() {
 	var headerLinks = document.getElementById("header_links");
@@ -62,4 +69,5 @@ function logout() {
 	"<a class = \"header\" href = \"createAccount.html\" target = \"_blank\">Create Account</a> | " +
 	"<a class = \"header\" href = \"#\" onclick = \"displayLogin()\">Log In</a>"
 	;
+	deleteCookie();
 }
