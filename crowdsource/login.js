@@ -1,5 +1,6 @@
-// Called on page load
-function load() {
+// Allows the user to press enter in the password field instead of
+// hitting the "Go" button.
+function setEnterCapability() {
 	$("#login_password").keyup(function(event) {
 	    if(event.keyCode == 13){
 	        login();
@@ -48,6 +49,7 @@ function login() {
 			} else {
 				loginTable.innerHTML += "<tr><td colspan = 3>Error: couldn't query database.</td></tr>";
 			}
+			setEnterCapability();
 		}
 	}
 }

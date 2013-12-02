@@ -1,80 +1,79 @@
-<!DOCTYPE HTML>
+<div>
+	<table id = "create_account_table">
+		<caption>Create Account</caption>
+		<tr>
+			<td>
+				<label>Username:<label>
+			</td>
+			<td>
+				<input id = "create_username" autofocus>
+				<div id = "no_username">
+					You must fill out this field!
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Email:<label>
+			</td>
+			<td>
+				<input id = "create_email" type = "email">
+				<div id = "no_email">
+					You must fill out this field!
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Password:<label>
+			</td>
+			<td>
+				<input id = "create_password" type = "password">
+				<div id = "no_password">
+					You must fill out this field!
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Confirm Password:<label>
+			</td>
+			<td>
+				<input id = "create_confirm_password" type = "password">
+				<div id = "no_pass_match">
+					Passwords don't match!
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan = 2>
+				<textarea id = "create_day_suggestion" maxlength = 169 placeholder = "Enter a suggestion that someone could do today" required></textarea>
+			</td>
+			<div id = "no_day_suggestion">
+				You must fill out this field!
+			</div>
+		</tr>
+		<tr>
+			<td colspan = 2>
+				<textarea id = "create_year_suggestion" maxlength = 169 placeholder = "Enter a suggestion that someone could do this year" required></textarea>
+			</td>
+			<div id = "no_year_suggestion">
+				You must fill out this field!
+			</div>
+		</tr>
+		<tr>
+			<td colspan = 2>
+				<textarea id = "create_life_suggestion" maxlength = 169 placeholder = "Enter a suggestion that someone could do before they die" required></textarea>
+			</td>
+			<div id = "no_life_suggestion">
+				You must fill out this field!
+			</div>
+		</tr>
+		<tr>
+			<td colspan = 2 style = "text-align: center">
+				<a id = "create_account_submit" href = "#" onclick = "checkFields()">Create Account</a>
+			</td>
+		</tr>
+	</table>
 
-<html>
-	
-	<head>
-		<title>
-			Create Account
-		</title>
-		<link rel = "stylesheet" type = "text/css" href = "style.css">
-		<link rel = "stylesheet" type = "text/css" href = "createAccount.css">
-		<script src = "createAccount.js"></script>
-		<script src = "jquery-1.10.2.min.js"></script>
-	</head>
-
-	<body>
-		<form action = "createUserAccount.php" method = "post">
-
-			<table id = "create_account_table">
-				<caption>Create Account</caption>
-				<tr>
-					<td>
-						<label>Username:<label>
-					</td>
-					<td>
-						<input name = "username" required autofocus>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Email:<label>
-					</td>
-					<td>
-						<input type = "email" name = "email" required>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Password:<label>
-					</td>
-					<td>
-						<input id = "password" type = "password" name = "password" required>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Confirm Password:<label>
-					</td>
-					<td>
-						<input id = "confirm_password" type = "password" name = "confirm_password">
-						<div id = "no_pass_match">
-							Passwords don't match!
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td colspan = 2>
-						<textarea name = "short_suggestion" id = "short_suggestion" maxlength = 169 placeholder = "Enter a suggestion that someone could do today" required></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan = 2>
-						<textarea name = "medium_suggestion" id = "medium_suggestion" maxlength = 169 placeholder = "Enter a suggestion that someone could do this year" required></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan = 2>
-						<textarea name = "long_suggestion" id = "long_suggestion" maxlength = 169 placeholder = "Enter a suggestion that someone could do before they die" required></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan = 2 style = "text-align: center">
-						<input onclick = "checkFields()" type = "submit" name = "submit" id = "submit" value = "Submit">
-					</td>
-				</tr>
-			</table>
-
-		</form>
-	</body>
-
-</html>
+</div>
