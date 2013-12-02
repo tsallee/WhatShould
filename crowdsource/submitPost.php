@@ -12,11 +12,11 @@ $content = $_POST('content');
 $username = $_POST('username');
 $category = $_POST('category');
 
-$get_user_id_query = "select * from user where username =".$username.";";
+$get_user_id_query = "select * from user where username =".$username;
 $user_id = $db->query($get_user_id_query)->fetch_assoc()['username']; /* This may be a problem */
 
 // Prepare query statement and execute it
-$create_user_query = "INSERT INTO post (id, content, user_id, upvotes, downvotes, score, total_votes, category, flagged) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$create_user_query = "INSERT INTO post (id, content, user_id, upvotes, downvotes, score, total_votes, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $db->prepare($create_user_query);
 
 // Assign the remaining variables for the insert statment
@@ -25,9 +25,8 @@ $upvotes = 0;
 $downvotes = 0;
 $score = 0;
 $total_votes = 0;
-$flagged = false;
 
-$stmt->bind_param($id, $content, $user_id, $upvotes, $downvotes, $score, $total_votes, $category, $flagged);
+$stmt->bind_param("isiiiiis", $id, $content, $user_id, $upvotes, $downvotes, $score, $total_votes, $category);
 
 if ( !($stmt->execute()) ) {
 	// Result was false (error inserting into database)
