@@ -20,7 +20,7 @@
 	$life_suggestion = $POST['life'];
 
 	// Check if username exists
-	$check_user_name_query = "select id from user where username = '".$username"'";
+	$check_user_name_query = "select id from user where username = '".$username."'";
 	$checked_user_name = $db->query($check_user_name_query)->num_rows;
 
 	if (num_rows > 0) {
