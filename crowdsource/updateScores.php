@@ -17,13 +17,23 @@
 
 		// get user_id
 		if ($username != "guest") {
-			$user_id_query = "select id from user where username = ".$username;
-			$user_id = $db->query($user_id_query);
+			$user_id_query = "select id from user where username = ?";
+			$stmt = $db->prepare($user_id_query);
+			$stmt->bind_param("s", $username);
+			$stmt->bind_result($user_id);
+			$stmt->execute();
+			$stmt->fetch_assoc();
+			$stmt->free_result();
 		}
 
 		// get post values
-		$get_post_query = "select upvotes, downvotes from post where id = ".$post_id;
-		$post_info = $db->query($get_post_query)->fetch_assoc();
+		$get_post_query = "select upvotes, downvotes from post where id = ?";
+		$stmt = $db->prepare($get_post_query);
+		$stmt->bind_param("i", $post_id);
+		$stmt->bind_result($post_info);
+		$stmt->execute();
+		$stmt->fetch_assoc();
+		$stmt->free_result();
 
 		// update values
 		$upvotes = $post_info['upvotes'];
@@ -34,8 +44,17 @@
 
 			// Add post to user's todo list
 			if ($username != "guest") {
-				$update_todo_list_query = "insert into todo_list values (".$post_id.", ".$user_id.", false, NULL)";
-				$db->query($update_todo_list_query);
+				$update_todo_list_query = "insert into todo_list values (?, ?, false, NULL)";
+				$stmt = $db->prepare($update_todo_list_query);
+				$stmt->bind_param("ii", $post_id, $user_id);
+				if (!$stmt->execute()) {
+					echo
+						"<div class = \"serverMessage\">" .
+							"Error: Post could not be added to your to-do list. Please try again later.<br>" .
+							"<a class = \"serverMessage\" href = \"#\" onclick = \"closeAccountPopup()\">Return to Home</a>" .
+						"</div>";
+						exit;
+				}
 			}
 		}
 		if ($action == "down") {
@@ -46,24 +65,40 @@
 		$total_votes = $upvotes + $downvotes;
 
 		// update post in database
-		$update_post_query = "update post set upvotes=".$upvotes.", downvotes=".$downvotes.", score=".$score.", total_votes=".$total_votes." where id = ".$post_id;
-		$db->query($update_post_query);
+		$update_post_query = "update post set upvotes=?, downvotes=?, score=?, total_votes=? where id=?";
+		$stmt = $db->prepare($update_post_query);
+		$stmt->bind_param("iiiii", $upvotes, $downvotes, $score, $total_votes, $post_id);
+		$stmt->execute();
 
 		// update users seen posts 
 		if ($username != "guest") {
-			$new_seen_post_query = "insert into user_voted_posts values (".$post_id.", ".$user_id.")";
-			$db->query($new_seen_post_query);
+			$new_seen_post_query = "insert into user_voted_posts values (?, ?)";
+			$stmt = $db->prepare($new_seen_post_query);
+			$stmt->bind_param("ii", $post_id, $user_id);
+			$stmt->execute();
 		}
 
 		// get post author
-		$get_post_author_query = "select user_id from post where id = ".$post_id;
-		$author_id = $db->query($get_post_author_query)->fetch_assoc();
+		$get_post_author_query = "select user_id from post where id = ?";
+		$stmt = $db->prepare($get_post_author_query);
+		$stmt->bind_param("i", $post_id);
+		$stmt->bind_result($author_id);
+		$stmt->execute();
+		$stmt->fetch_assoc();
+		$stmt->free_result();
 
 		// update user score
-		$new_score_query = "select sum(score) from post where user_id = ".$author_id['user_id'];
-		$new_score = $db->query($new_score_query)->fetch_assoc();
+		$new_score_query = "select sum(score) from post where user_id = ?";
+		$stmt = $db->prepare($new_score_query);
+		$stmt->bind_param("i", $author_id['user_id'];
+		$stmt->bind_result($new_score);
+		$stmt->execute();
+		$stmt->fetch_assoc();
+		$stmt->free_result();
 
-		$update_user_score_query = "update user set score=".$new_score['sum(score)']." where id = ".$author_id['user_id'];
-		$db->query($update_user_score_query);
+		$update_user_score_query = "update user set score = ? where id = ?";
+		$stmt = $db->prepare($update_user_score_query);
+		$stmt->bind_param("ii", $new_score['sum(score)'], $author_id['user_id']);
+		$stmt->execute();
 	}
 ?>

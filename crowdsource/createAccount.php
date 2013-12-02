@@ -20,9 +20,15 @@
 	$life_suggestion = $_POST['life'];
 
 	// Check if username exists
-	$check_user_name_query = "select id from user where username = '".$username."'";
+	$check_user_name_query = "select id from user where username = ?";
+	$stmt = $db->prepare($check_user_name_query);
+	$stmt->bind_param("s", $username);
+	$stmt->bind_result($check_user_name_query_result);
+	$stmt->execute();
+	$stmt->fetch_assoc();
+	$stmt->free_result();
 
-	$num_rows = $db->query($check_user_name_query)->num_rows;
+	$num_rows = $check_user_name_query_result->num_rows;
 
 	if ($num_rows > 0) {
 		echo
@@ -74,8 +80,13 @@
 
 	function submit_post($username, $content, $category, $db) {
 
-		$get_user_id_query = "select * from user where username =".$username;
-		$user_query_result = $db->query($get_user_id_query)->fetch_assoc();
+		$get_user_id_query = "select * from user where username = ?";
+		$stmt = $db->prepare($get_user_id_query);
+		$stmt->bind_param("s", $username);
+		$stmt->bind_result($user_query_result);
+		$stmt->execute();
+		$stmt->fetch_assoc();
+		$stmt->free_result();
 
 		$user_id = $user_query_result['id'];
 
