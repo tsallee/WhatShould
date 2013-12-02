@@ -15,6 +15,9 @@ function loadPage() {
 	}
 }
 
+// Drops a cookie on the user's browser so they will stay logged in unless
+// they log out, which keeps track of their username so it can be used in
+// all the pages on our site.
 function dropCookie(username) {
 	var c_name = cookieName;
 	var c_value = username;
@@ -25,10 +28,13 @@ function dropCookie(username) {
 	document.cookie = c_name + "=" + c_value;
 }
 
+// Removes the "what_should_cookie" from the user's browser
 function deleteCookie() {
     document.cookie = cookieName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 };
 
+// If the user has our cookie on their browser, this function will extract
+// their username from the cookie.
 function getUsernameFromCookie() {
 	var c_name = cookieName;
 	var c_value = document.cookie;
@@ -54,6 +60,8 @@ function getUsernameFromCookie() {
 	return c_value;
 }
 
+// This function sets the "currentUser" variable with the value extracted
+// from the cookie, and with "guest" otherwise
 function setUserName() {
 	username = getUsernameFromCookie();
   	if ( username != null && username != "" && username != "guest") {
