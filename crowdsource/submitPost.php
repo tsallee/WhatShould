@@ -12,10 +12,13 @@ $content = $_POST('content');
 $username = $_POST('username');
 $category = $_POST('category');
 
-$get_user_id_query = "select * from user where username =".$username;
-$user_query_result = $db->query($get_user_id_query)->fetch_assoc();
-$user_id = $user_query_result['username'];
-
+$get_user_id_query = "select id from user where username = ?";
+$stmt = $db->prepare($get_user_id_query);
+$stmt->bind_param("i", $username);
+$stmt->bind_result($user_id);
+$stmt->execute();
+$stmt->fetch();
+$stmt->free_result();
 
 // Prepare query statement and execute it
 $create_user_query = "INSERT INTO post (id, content, user_id, upvotes, downvotes, score, total_votes, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
