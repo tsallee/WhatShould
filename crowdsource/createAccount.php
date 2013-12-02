@@ -15,20 +15,21 @@
 	$username = $_POST['username'];
 	$password = md5($_POST['password']);
 	$email = $_POST['email'];
-	$day_suggestion = $POST['day'];
-	$year_suggestion = $POST['year'];
-	$life_suggestion = $POST['life'];
+	$day_suggestion = $_POST['day'];
+	$year_suggestion = $_POST['year'];
+	$life_suggestion = $_POST['life'];
 
 	// Check if username exists
-	$check_user_name_query = "select id from user where username = '".$username"'";
-	$checked_user_name = $db->query($check_user_name_query)->num_rows;
+	$check_user_name_query = "select id from user where username = '".$username."'";
+	$num_rows = $db->query($check_user_name_query)->num_rows;
 
-	if (num_rows > 0) {
+	if ($num_rows > 0) {
 		echo
 			"<div class = \"serverMessage\">" .
-				"The username '".$username."' has already been taken.<br>" .
+				"We're sorry, the username '".$username."' has already been taken.<br>" .
 				"<a class = \"serverMessage\" href = \"#\" onclick = \"closeAccountPopup()\">Return to Home</a>" .
 			"</div>";
+			exit;
 	}
 
 	// Prepare user query
@@ -62,17 +63,20 @@
 	}
 
 	// Insert suggestions into database
-	submit_post($username, $day_suggestion, "day");
-	submit_post($username, $year_suggestion, "year");
-	submit_post($username, $life_suggestion, "life");
+	submit_post($username, $day_suggestion, "day", $db);
+	submit_post($username, $year_suggestion, "year", $db);
+	submit_post($username, $life_suggestion, "life", $db);
 
 	// Close the database
 	$db->close();
 
 
-	function submit_post($username, $content, $category) {
+	function submit_post($username, $content, $category, $db) {
+
 		$get_user_id_query = "select * from user where username =".$username;
-		$user_id = $db->query($get_user_id_query)->fetch_assoc()['username'];
+		$user_query_result = $db->query($get_user_id_query)->fetch_assoc();
+
+		$user_id = $user_query_result['id'];
 
 		// Prepare query statement and execute it
 		$create_user_query = "INSERT INTO post (id, content, user_id, upvotes, downvotes, score, total_votes, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -87,6 +91,6 @@
 
 		$stmt->bind_param("isiiiiis", $id, $content, $user_id, $upvotes, $downvotes, $score, $total_votes, $category);
 
-		return ($stmt->execute())
+		return ($stmt->execute());
 	}
 ?>
