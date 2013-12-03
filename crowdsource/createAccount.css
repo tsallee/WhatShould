@@ -8,6 +8,12 @@
 	display: none;
 }
 
+#close_account_form {
+	font-size: 2em;
+	position: relative;
+	right: 1em; top: 1em;
+}
+
 #create_account_form {
 	border-radius: 2em;
 	padding: 3em;

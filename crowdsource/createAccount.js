@@ -99,9 +99,9 @@ function saveAccount(username, password, email, daySuggestion, yearSuggestion, l
 		if ( request.readyState == 4 && request.status == 200) {
 			// Get the response from the server
 			var response = request.responseText;
-			var createAccountDiv = document.getElementById("create_account_form");
-			createAccountDiv.innerHTML = response;
-			$(createAccountDiv).fadeIn(600);
+			var createAccountForm = document.getElementById("create_account_form");
+			createAccountForm.innerHTML = response;
+			$(createAccountForm).fadeIn(600);
 		}
 	}
 }
