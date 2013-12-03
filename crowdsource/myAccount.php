@@ -24,9 +24,9 @@
 		$stmt->free_result();
 
 		// get todo list posts
-		$get_todo_list = "select post.id, post.content, post.score, todo_list.completed from post, todo_list where post.id in (select post_id from todo_list where user_id=?) and category=? and post.id=todo_list.post_id";
+		$get_todo_list = "select post.id, post.content, post.score, todo_list.completed from post, todo_list where post.id in (select post_id from todo_list where user_id=?) and category=? and post.id=todo_list.post_id and todo_list.user_id = ?";
 		$stmt = $db->prepare($get_todo_list);
-		$stmt->bind_param("is", $user_id, $type);
+		$stmt->bind_param("isi", $user_id, $type, $user_id);
 		$stmt->bind_result($post_id, $post_content, $post_score, $completed);
 		$stmt->execute();
 
