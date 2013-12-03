@@ -22,10 +22,6 @@
 		$stmt->fetch();
 		$stmt->free_result();
 
-		if ($user) {
-			return $user_score;
-		} else {
-			return false;
-		}
+		return $user_score;
 	}
 ?>
