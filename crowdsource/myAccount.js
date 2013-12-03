@@ -50,8 +50,8 @@ function dayToDo() {
 	request.onreadystatechange = function() {
 		if ( request.readyState == 4 && request.status == 200) {
 			// Get the response from the server
-			// alert(request.responseText);
-			// var response = JSON.parse(request.responseText);
+			alert(request.responseText);
+			var response = JSON.parse(request.responseText);
 			var contentArea = document.getElementById("my_account_content");
 
 			var html =
@@ -60,13 +60,15 @@ function dayToDo() {
 					"<th>Activity</th><th>Completed?</th>";
 				"</tr>"
 			;
-			for ( var i = 0; i < 3; i++) {//response.length; i++ ) {
+			for ( var i = 0; i < response.length; i++) {
 				html +=
 				"<tr>" +
 					"<td>" +
-						"<p class = \"myAccountSuggestion\">Hello I am a suggestion</p>" +
+						"<p class = \"myAccountSuggestion\">";
+							html += response[i].content;
+							html += "</p>" +
 					"</td>" +
-					"<td>" +
+					"<td style = \"text-align: center\">" +
 						"<a class = \"completed\">Yes</a>";
 					"</td>" +
 				"</tr>"

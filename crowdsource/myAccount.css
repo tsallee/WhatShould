@@ -37,24 +37,27 @@
 	text-align: center;
 }
 
-.todoTable {
-	border: 2px solid black;
-	margin: 2em auto 1em auto;
-	text-align: center;
-	font-size: 1.5em;
-	width: 60%;
-	height: 100%;
+#my_account_content {
+	height: 27em;
 	overflow: auto;
 }
 
+.todoTable {
+	margin: 2em auto 1em auto;
+	text-align: left;
+	max-width: 70%;
+}
+
 .todoTable td {
+	font-size: 1em;
 	vertical-align: center;
-	padding: .5em;
+	padding: 1.1em;
 }
 
 .todoTable th {
 	font-weight: bold;
 	font-size: 1.5em;
+	padding: 1em;
 }
 
 .myAccountSuggestion {
