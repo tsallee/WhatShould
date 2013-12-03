@@ -11,9 +11,10 @@ function myAccount(username) {
 			var response = request.responseText;
 			var suggestionBox = document.getElementById("suggestion_box");
 			var myAccountDiv = document.getElementById("my_account_div");
+			myAccountDiv.innerHTML = response;
 			$(suggestionBox).fadeOut(600);
-			window.setTimeout(function() { $(createAccountDiv).fadeIn(600); }, 600);
-			
+			window.setTimeout(function() { $(myAccountDiv).fadeIn(600); }, 600);
+
 		}
 	}
 

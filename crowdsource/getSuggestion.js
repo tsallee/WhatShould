@@ -26,6 +26,7 @@ function displaySuggestion(type) {
 				suggestionDiv.innerHTML =
 				"<p class = \"suggestion\">We're sorry, we couldn't find a suggestion right now. Please try again later.</p>";
 			} else {
+				alert(response);
 				var responseArray = JSON.parse(response);
 				var id = responseArray[0];
 				var suggestion = responseArray[1];
@@ -37,24 +38,34 @@ function displaySuggestion(type) {
 				} else {
 					scoreDisplay = score;
 				}
+				
 				// NEED TO PASS IN USERNAME TO UPDATESCORE IF LOGGED IN. WE WILL NEED TO THEN TEST IT TO MAKE SURE THE RIGHT SUGGESTIONS ARE GIVEN
-				suggestionDiv.innerHTML =
+				var suggestionHTML =
 				"<table>" +
 					"<tr>" +
 						"<td class = \"score\">" + scoreDisplay + "</td>" +
-						"<td><p class = \"suggestion\">" + suggestion + "</p></td>" +
-						"<td class = \"suggestionButtons\">" +
-							"<table>" +
-								"<tr>" +
-									"<td class = \"thumbUp\" onclick = \"updateScore(" + id + ",'" + currentUser + "'," + "'up')\">&nbsp;</td>" +
-									"<td class = \"thumbDown\" onclick = \"updateScore(" + id + ",'" + currentUser + "'," + "'down')\">&nbsp;</td>" +
-									"<td class = \"skip\" onclick = \"updateScore(" + id + ",'" + currentUser + "'," + "'skip')\">&nbsp;</td>" +
-								"</tr>" +
-							"</table>" +
-							"</td>" +
+						"<td><p class = \"suggestion\">" + suggestion + "</p></td>"
+						;
+						if ( id != "" ) {
+							suggestionHTML +=
+							"<td class = \"suggestionButtons\">" +
+								"<table>" +
+									"<tr>" +
+										"<td class = \"thumbUp\" onclick = \"updateScore(" + id + ",'" + currentUser + "'," + "'up')\">&nbsp;</td>" +
+										"<td class = \"thumbDown\" onclick = \"updateScore(" + id + ",'" + currentUser + "'," + "'down')\">&nbsp;</td>" +
+										"<td class = \"skip\" onclick = \"updateScore(" + id + ",'" + currentUser + "'," + "'skip')\">&nbsp;</td>" +
+									"</tr>" +
+								"</table>" +
+							"</td>"
+							;
+						} else {
+							suggestionHTML += "<td>&nbsp;</td>";
+						}
+						suggestionHTML +=
 					"</tr>" +
 				"</table>"
 				;
+				suggestionDiv.innerHTML = suggestionHTML;
 				if ( score < 0 ) {
 					scoreTd[0].style.color = "#C10202";
 				} else if ( score > 0 ) {
