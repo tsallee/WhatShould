@@ -55,7 +55,11 @@ function dayToDo() {
 			var contentArea = document.getElementById("my_account_content");
 
 			var html =
-			"<table class = \"todoTable\">";
+			"<table class = \"todoTable\">" +
+				"<tr>" +
+					"<th>Activity</th><th>Completed?</th>";
+				"</tr>"
+			;
 			for ( var i = 0; i < 3; i++) {//response.length; i++ ) {
 				html +=
 				"<tr>" +
@@ -63,8 +67,8 @@ function dayToDo() {
 						"<p class = \"myAccountSuggestion\">Hello I am a suggestion</p>" +
 					"</td>" +
 					"<td>" +
+						"<a class = \"completed\">Yes</a>";
 					"</td>" +
-					
 				"</tr>"
 				;
 			}
