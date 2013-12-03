@@ -99,6 +99,13 @@ function saveAccount(username, password, email, daySuggestion, yearSuggestion, l
 		if ( request.readyState == 4 && request.status == 200) {
 			// Get the response from the server
 			var response = request.responseText;
+			if ( response.indexOf("Congratulations, your account was successfully created") != -1 ) {
+				dropCookie(username);
+				setUserName();
+				if ( currentUser != "guest" ) {
+					displayMemberLinks(username);
+				}
+			}
 			var createAccountForm = document.getElementById("create_account_form");
 			createAccountForm.innerHTML = response;
 			$(createAccountForm).fadeIn(600);

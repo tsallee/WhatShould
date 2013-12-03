@@ -29,7 +29,10 @@ function displaySuggestion(type) {
 				var responseArray = JSON.parse(response);
 				var id = responseArray[0];
 				var suggestion = responseArray[1];
-				var score = responseArray[2];
+				var score = parseInt(responseArray[2]);
+				if ( isNaN(score) ) {
+					score = "";
+				}
 				var scoreDisplay = score;
 				var scoreTd = document.getElementsByClassName("score");
 				if ( score > 0 ) {
