@@ -29,15 +29,15 @@
 			$stmt = $db->prepare($update_user_score_query);
 			$stmt->bind_param("ii", $user_id, $post_id);
 			$stmt->execute();
+			$db->close();
+			return "Yes";
 		} else {
 			$update_completed_query = "update todo_list set completed = false where user_id = ? and post_id = ?";
 			$stmt = $db->prepare($update_user_score_query);
 			$stmt->bind_param("ii", $user_id, $post_id);
 			$stmt->execute();
+			$db->close();
+			return "No";
 		}
-
-		$db->close();
-
-		return $user_score;
 	}
 ?>

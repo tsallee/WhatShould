@@ -9,8 +9,7 @@
 
 #my_account_tabs {
 	text-align: center;
-	font-weight: bold;
-	font-size: 1.5em;
+	font-size: 1.7em;
 	margin: 1em auto 1em auto;
 	color: #610B21;
 }
@@ -67,4 +66,13 @@
 	width: 100%;
 	margin: 0;
 	line-height: 150%;
+}
+
+.myAccountCompleted {
+	color: #610B21;
+	font-weight: bold;
+}
+
+.myAccountCompleted:hover {
+	text-decoration: underline;
 }
