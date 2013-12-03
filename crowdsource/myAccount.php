@@ -27,22 +27,24 @@
 		$get_todo_list = "select post.id, post.content, post.score, todo_list.completed from post, todo_list where post.id in (select post_id from todo_list where user_id=?) and category=? and post.id=todo_list.post_id";
 		$stmt = $db->prepare($get_todo_list);
 		$stmt->bind_param("is", $user_id, $type);
+		$stmt->bind_result($post_id, $post_content, $post_score, $completed);
 		$stmt->execute();
-		$stmt->store_result();
-		$num_rows = $stmt->num_rows;
 
 		// Create string of JSON objects
 		$return_string = "[";
-		for ($i = 0; $i < $num_rows; $i++) {
+		while ($stmt->fetch()) {
 			$todo_list_item = $todo_list->fetch_assoc();
 			if ($i != $num_rows - 1) {
-				$post_string = "{id: \"".$todo_list_item['id']."\", content: \"".$todo_list_item['content']."\", score: \"".$todo_list_item['score']."\", completed: \"".$todo_list_item['completed']."\"}, ";
+				$post_string = "{id: \"".$post_id."\", content: \"".$post_content."\", score: \"".$post_score."\", completed: \"".$completed."\"}, ";
 			} else {
-				$post_string = "{id: \"".$todo_list_item['id']."\", content: \"".$todo_list_item['content']."\", score: \"".$todo_list_item['score']."\", completed: \"".$todo_list_item['completed']."\"}";
+				$post_string = "{id: \"".$post_id."\", content: \"".$post_content."\", score: \"".$post_score."\", completed: \"".$completed."\"}";
 			}
 			$return_string += $post_string;
 		}
 		$return_string += "]";
+
+		$stmt->free_result();
+		$stmt->close;
 
 		if ($todo_list) {
 			return $return_string;
