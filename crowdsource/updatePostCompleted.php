@@ -1,12 +1,12 @@
 <?php
 	// get the query parameter from URL
 	$username = $_POST['username'];
-	$username = $_POST['post_id'];
-	$username = $_POST['completed'];
+	$post_id = $_POST['post_id'];
+	$completed = $_POST['completed'];
 
 	echo update_post_completed($username, $post_id, $completed);
 
-	function update_post_completed($username, $post_id, $completed)) {
+	function update_post_completed($username, $post_id, $completed) {
 
 		// Try to connect to the database
 		@ $db = new mysqli('localhost', 'team10', 'pear', 'team10');
@@ -24,16 +24,16 @@
 		$stmt->free_result();
 
 		// Update the post in the todo list
-		if ($completed == true) {
+		if ($completed) {
 			$update_completed_query = "update todo_list set completed = true where user_id = ? and post_id = ?";
-			$stmt = $db->prepare($update_user_score_query);
+			$stmt = $db->prepare($update_completed_query);
 			$stmt->bind_param("ii", $user_id, $post_id);
 			$stmt->execute();
 			$db->close();
 			return "Yes";
 		} else {
 			$update_completed_query = "update todo_list set completed = false where user_id = ? and post_id = ?";
-			$stmt = $db->prepare($update_user_score_query);
+			$stmt = $db->prepare($update_completed_query);
 			$stmt->bind_param("ii", $user_id, $post_id);
 			$stmt->execute();
 			$db->close();

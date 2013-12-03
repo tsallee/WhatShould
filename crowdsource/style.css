@@ -94,3 +94,7 @@ a.goButton {
 a.goButton:hover {
 	background: white;
 }
+
+#home_button {
+	text-align: left;
+}

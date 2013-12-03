@@ -48,7 +48,7 @@
 }
 
 .todoTable td {
-	font-size: 1em;
+	font-size: 1.2em;
 	vertical-align: center;
 	padding: 1.1em;
 }
@@ -71,6 +71,7 @@
 .myAccountCompleted {
 	color: #610B21;
 	font-weight: bold;
+	text-decoration: none;
 }
 
 .myAccountCompleted:hover {

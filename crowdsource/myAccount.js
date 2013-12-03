@@ -67,12 +67,12 @@ function dayToDo() {
 							html += response[i].content;
 							html += "</p>" +
 					"</td>" +
-					"<td id = \"" + response.id + "_td" + "\" style = \"text-align: center\">"
+					"<td id = \"" + response[i].id + "_td" + "\" style = \"text-align: center\">"
 					;
 					if ( response[i].completed == 0 ) {
-						html += "<a class = \"myAccountCompleted\" href = \"#\" onclick = \"updatePostCompleted(" + response.id +")\">No</a>";
+						html += "<a class = \"myAccountCompleted\" href = \"#\" onclick = \"updatePostCompleted(" + response[i].id +")\">No</a>";
 					} else if ( response[i].completed == 1 ) {
-						html += "<a class = \"myAccountCompleted\" href = \"#\" onclick = \"updatePostCompleted(" + response.id +")\">Yes</a>";
+						html += "<a class = \"myAccountCompleted\" href = \"#\" onclick = \"updatePostCompleted(" + response[i].id +")\">Yes</a>";
 					} else {
 						html += "&nbsp;";
 					}
@@ -98,23 +98,23 @@ function dayToDo() {
 	}
 }
 
-function updatePostCompleted(postID) {
-	var completedTd = document.getElementById(postID + "_td");
-	completedTd.innerHTML = "Mark as Completed?" +
-	"<a href = \"#\" onclick = \"completePost('" + currentUser + "'," + postID + ", 1)\">Yes</a> | " +
-	"<a href = \"#\" onclick = \"completePost('" + currentUser + "'," + postID + ", 0)\">No</a>";
+function updatePostCompleted(postId) {
+	var completedTd = document.getElementById(postId + "_td");
+	completedTd.innerHTML = "Mark as Completed?<br>" +
+	"<a class = \"myAccountCompleted\" href = \"#\" onclick = \"completePost('" + currentUser + "'," + postId + ", 1)\">Yes</a> | " +
+	"<a class = \"myAccountCompleted\" href = \"#\" onclick = \"completePost('" + currentUser + "'," + postId + ", 0)\">No</a>";
 }
 
 function completePost(userId, postId, completed) {
 	var request = new XMLHttpRequest();
 	var url = "http://luna.mines.edu/csci_445/2013_fall/team10/crowdsource/updatePostCompleted.php";
-	request.open("POST", url, false);
+	request.open("POST", url, true);
 	request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	request.send("username=" + currentUser + "&post_id=" + postId + "&completed=" + completed);
 	request.onreadystatechange = function() {
 		if ( request.readyState == 4 && request.status == 200) {
-			var completedTd = document.getElementById(postID + "_td");
-			completedTd.innerHTML = "<a class = \"myAccountCompleted\" href = \"#\" onclick = \"updatePostCompleted(" + response.id +")\">" + request.responseText + "</a>";
+			var completedTd = document.getElementById(postId + "_td");
+			completedTd.innerHTML = "<a class = \"myAccountCompleted\" href = \"#\" onclick = \"updatePostCompleted(" + postId +")\">" + request.responseText + "</a>";
 		}
 	}
 }
