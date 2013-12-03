@@ -1,0 +1,38 @@
+#my_account_div {
+	margin: 5% auto 5% auto;
+	width: 90%;
+	height: 60%;
+	text-align: center;
+	vertical-align: center;
+	display: none;
+}
+
+#my_account_tabs {
+	font-weight: bold;
+	width: 100%;
+	font-size: 1.5em;
+	padding: 1em;
+	color: #610B21;
+}
+
+#my_account_tabs a {
+	text-decoration: none;
+	color: #610B21;
+}
+
+#my_account_tabs a:hover {
+	text-decoration: underline;
+	color: #610B21;
+}
+
+#to_do_list_title {
+	font-size: 3.5em;
+	color: black;
+	text-shadow: .1em .1em .15em #626264;
+}
+
+#my_account_user_id {
+	font-size: 2.5em;
+	color: black;
+	text-align: center;
+}
