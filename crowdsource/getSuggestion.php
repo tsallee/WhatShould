@@ -38,7 +38,7 @@ $get_user_stmt->free_result();
 
  // If user has no currency, don't let them see a post
  if ($currency < 1) {
- 	echo "<p class = \"suggestion\">Taylor Sucks</p>";
+ 	echo "[\"" . "" . "\",\"" . "<p class = 'suggestion'>To view more suggestions, you must submit a suggestion.</p>" . "\",\"" . "" . "\"]";
  	exit;
  }
 
