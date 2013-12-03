@@ -2,7 +2,7 @@
 	// get the query parameter from URL
 	$post_id = $_POST['post_id'];
 	$username = $_POST['username'];	// "guest" for guest
-	$action = $_POST['action'];	// Either "up" or "down"
+	$action = $_POST['action'];	// Either "up" or "down" or "skip"
 
 	echo update_scores($post_id, $username, $action);
 
@@ -33,6 +33,11 @@
 			$stmt = $db->prepare($update_post_query);
 			$stmt->bind_param("ii", $currency, $user_id);
 			$stmt->execute();
+		}
+
+		// Eject if skip
+		if ($action == "skip") {
+			return "";
 		}
 
 		// get post values

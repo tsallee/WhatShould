@@ -66,7 +66,7 @@ insert into post values (NULL, "Be more punctual - be early to meetings that you
 insert into post values (NULL, "Read one new book each month", 1, 0, 2, (0*3)-(2*1), (0+2), "year");
 insert into post values (NULL, "Make more eye contact during conversations", 1, 1, 2, (1*3)-(2*1), (1+2), "year");
 insert into post values (NULL, "Start flossing your teeth", 1, 2, 2, (2*3)-(2*1), (2+2), "year");
-insert into post values (NULL, "Know which candidate you’re going to vote for in the upcoming presidential election, and know why", 1, 3, 2, (3*3)-(2*1), (3+2), "year");
+insert into post values (NULL, "Know which candidate you're going to vote for in the upcoming presidential election, and know why", 1, 3, 2, (3*3)-(2*1), (3+2), "year");
 insert into post values (NULL, "Spend less than or equal to the money you earn each month", 2, 4, 2, (4*3)-(2*1), (4+2), "year");
 insert into post values (NULL, "Break a record", 2, 5, 2, (5*3)-(2*1), (5+2), "year");
 insert into post values (NULL, "Find a new TV show to get into", 2, 6, 2, (6*3)-(2*1), (6+2), "year");
@@ -123,7 +123,7 @@ insert into post values (NULL, "Swim across the English Channel", 1, 1, 6, (1*3)
 insert into post values (NULL, "Run a triathlon", 1, 2, 6, (2*3)-(6*1), (2+6), "life");
 insert into post values (NULL, "Learn archery", 1, 3, 6, (3*3)-(6*1), (3+6), "life");
 insert into post values (NULL, "Go golfing at each of the 100 Best Major Golf Courses in the World", 2, 4, 6, (4*3)-(6*1), (4+6), "life");
-insert into post values (NULL, "Learn to say “hello” in 50 different languages", 2, 5, 6, (5*3)-(6*1), (5+6), "life");
+insert into post values (NULL, "Learn to say 'hello' in 50 different languages", 2, 5, 6, (5*3)-(6*1), (5+6), "life");
 insert into post values (NULL, "Learn to play the piano", 2, 6, 6, (6*3)-(6*1), (6+6), "life");
 insert into post values (NULL, "Learn to play the guitar", 3, 7, 6, (7*3)-(6*1), (7+6), "life");
 insert into post values (NULL, "Ride in a hot air balloon", 3, 8, 6, (8*3)-(6*1), (8+6), "life");
@@ -132,7 +132,7 @@ insert into post values (NULL, "Go skydiving", 3, 9, 6, (9*3)-(6*1), (9+6), "lif
 insert into post values (NULL, "Go snorkeling in a shipwreck", 1, 0, 7, (0*3)-(7*1), (0+7), "life");
 insert into post values (NULL, "Ride a mechanical bull", 1, 1, 7, (1*3)-(7*1), (1+7), "life");
 insert into post values (NULL, "Go bungee jumping", 1, 2, 7, (2*3)-(7*1), (2+7), "life");
-insert into post values (NULL, "Ride the world’s largest Ferris Wheels", 1, 3, 7, (3*3)-(7*1), (3+7), "life");
+insert into post values (NULL, "Ride the world's largest Ferris Wheels", 1, 3, 7, (3*3)-(7*1), (3+7), "life");
 insert into post values (NULL, "Experience weightlessness", 2, 4, 7, (4*3)-(7*1), (4+7), "life");
 insert into post values (NULL, "Visit the Grand Canyon", 2, 5, 7, (5*3)-(7*1), (5+7), "life");
 insert into post values (NULL, "Visit the Great Barrier Reef", 2, 6, 7, (6*3)-(7*1), (6+7), "life");
