@@ -101,6 +101,13 @@
 
 		$stmt->bind_param("isiiiiis", $id, $content, $user_id, $upvotes, $downvotes, $score, $total_votes, $category);
 
+		$post_id = $db->insert_id;
+
+		$new_seen_post_query = "insert into user_voted_posts values (?, ?)";
+		$stmt = $db->prepare($new_seen_post_query);
+		$stmt->bind_param("ii", $post_id, $user_id);
+		$stmt->execute();
+
 		return ($stmt->execute());
 	}
 ?>
