@@ -62,10 +62,6 @@ function displayMemberLinks(username) {
 
 // Logs the user out, returning to guest view mode
 function logout() {
-	var headerLinks = document.getElementById("header_links");
-	headerLinks.innerHTML =
-	"<a class = \"header\" href = \"#\" onclick = \"createAccount()\">Create Account</a> | " +
-	"<a class = \"header\" href = \"#\" onclick = \"displayLogin()\">Log In</a>"
-	;
 	deleteCookie();
+	location.reload();
 }
