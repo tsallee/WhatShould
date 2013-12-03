@@ -14,9 +14,13 @@
 		}
 
 		// get user score
-		$get_user_score = "select score from user where username=".$username;
-		$user = $db->query($get_user_score)->fetch_assoc();
-		$user_score = $user['score'];
+		$get_user_score = "select score from user where username=?";
+		$stmt = $db->prepare($get_user_score);
+		$stmt->bind_param("s", $username);
+		$stmt->bind_result($user_score);
+		$stmt->execute();
+		$stmt->fetch();
+		$stmt->free_result();
 
 		if ($user) {
 			return $user_score;
