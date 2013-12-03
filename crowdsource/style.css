@@ -96,5 +96,8 @@ a.goButton:hover {
 }
 
 #home_button {
+	position: absolute;
+	left: 4em; top: 1em;
+	z-index: 2;
 	text-align: left;
 }

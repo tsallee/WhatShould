@@ -15,6 +15,16 @@ function loadPage() {
 	}
 }
 
+function hoverHome() {
+	var home = document.getElementById("home_icon");
+	home.src = "home_icon_hover.png";
+}
+
+function backToHome() {
+	var home = document.getElementById("home_icon");
+	home.src = "home_icon.png";
+}
+
 // Drops a cookie on the user's browser so they will stay logged in unless
 // they log out, which keeps track of their username so it can be used in
 // all the pages on our site.
