@@ -16,7 +16,8 @@
 
 		// get user_id
 		$get_user_id = "select id from user where username=".$username;
-		$user = $db->query($get_user_id)->fetch_assoc();
+		$user = $db->query($get_user_id);
+		$user->fetch_assoc();
 		$user_id = $user['id'];
 
 		// get todo list posts
@@ -26,9 +27,9 @@
 
 		// Create string of JSON objects
 		$return_string = "[";
-		for (i = 0; i < $num_rows; i++) {
+		for ($i = 0; $i < $num_rows; $i++) {
 			$todo_list_item = $todo_list->fetch_assoc();
-			if (i != $num_rows - 1) {
+			if ($i != $num_rows - 1) {
 				$post_string = "{id: \"".$todo_list_item['id']."\", content: \"".$todo_list_item['content']."\", score: \"".$todo_list_item['score']."\", completed: \"".$todo_list_item['completed']."\"}, ";
 			} else {
 				$post_string = "{id: \"".$todo_list_item['id']."\", content: \"".$todo_list_item['content']."\", score: \"".$todo_list_item['score']."\", completed: \"".$todo_list_item['completed']."\"}";
