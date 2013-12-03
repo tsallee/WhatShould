@@ -9,9 +9,11 @@ function myAccount(username) {
 		if ( request.readyState == 4 && request.status == 200) {
 			// Get the response from the server
 			var response = request.responseText;
-			var createAccountDiv = document.getElementById("create_suggestion_div");
-			createAccountDiv.innerHTML = response;
-			$(createAccountDiv).fadeIn(600);
+			var suggestionBox = document.getElementById("suggestion_box");
+			var myAccountDiv = document.getElementById("my_account_div");
+			$(suggestionBox).fadeOut(600);
+			window.setTimeout(function() { $(createAccountDiv).fadeIn(600); }, 600);
+			
 		}
 	}
 

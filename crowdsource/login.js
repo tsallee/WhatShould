@@ -55,7 +55,7 @@ function displayMemberLinks(username) {
 	var headerLinks = document.getElementById("header_links");
 	headerLinks.innerHTML =
 	"<a class = \"header\" href = \"#\" onclick = \"createSuggestion()\">Create Suggestion</a> | " +
-	"<a class = \"header\" href = \"#\" onclick= \"myAccount(" + username + ")\">" + username + "</a> | " +
+	"<a class = \"header\" href = \"#\" onclick= \"myAccount('" + username + "')\">" + username + "</a> | " +
 	"<a class = \"header\" href = \"#\" onclick = \"logout()\">Log Out</a>"
 	;
 }

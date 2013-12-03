@@ -11,10 +11,12 @@ function updateScore(post_id, username, action) {
 				if ( response != "" && response != null ) {
 					upVote(response);
 				} else {
-					downVote();
+					skip();
 				}
 			} else if ( action == "down" ) {
-				downVote();
+				skip();
+			} else {
+				skip();
 			}
 		}
 	}

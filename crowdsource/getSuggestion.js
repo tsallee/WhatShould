@@ -48,7 +48,7 @@ function displaySuggestion(type) {
 								"<tr>" +
 									"<td class = \"thumbUp\" onclick = \"updateScore(" + id + ",'" + currentUser + "'," + "'up')\">&nbsp;</td>" +
 									"<td class = \"thumbDown\" onclick = \"updateScore(" + id + ",'" + currentUser + "'," + "'down')\">&nbsp;</td>" +
-									"<td class = \"skip\" onclick = \"displaySuggestion('" + type + "')\">&nbsp;</td>" +
+									"<td class = \"skip\" onclick = \"updateScore(" + id + ",'" + currentUser + "'," + "'skip')\">&nbsp;</td>" +
 								"</tr>" +
 							"</table>" +
 							"</td>" +
@@ -109,7 +109,7 @@ function upVote(response) {
 	
 }
 
-// Called when the suggestion gets downvoted (a thumbs down)
-function downVote() {
+// Called when the suggestion gets downvoted (a thumbs down) or skipped
+function skip() {
 	displaySuggestion(suggestionType);
 }
