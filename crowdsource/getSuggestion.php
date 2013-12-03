@@ -27,13 +27,20 @@ if ( $username == "guest" ) {
 }
 
 // Get user information from database
-$get_user_query = "select id from user where username = ?";
+$get_user_query = "select id, currency from user where username = ?";
 $get_user_stmt = $db->prepare($get_user_query);
 $get_user_stmt->bind_param("s", $username);
-$get_user_stmt->bind_result($user_id);
+$get_user_stmt->bind_result($user_id, $currency);
 $get_user_stmt->execute();
 $get_user_stmt->fetch();
 $get_user_stmt->free_result();
+ 
+
+ // If user has no currency, don't let them see a post
+ if ($currency < 1) {
+ 	echo "<p class = \"suggestion\">Taylor Sucks</p>";
+ 	exit;
+ }
 
 // Get quality count
 $get_user_quality_count = "select quality_count from user where id = ".$user_id;

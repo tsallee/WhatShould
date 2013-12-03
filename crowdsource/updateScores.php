@@ -17,13 +17,22 @@
 
 		// get user_id
 		if ($username != "guest") {
-			$user_id_query = "select id from user where username = ?";
+			$user_id_query = "select id, currency from user where username = ?";
 			$stmt = $db->prepare($user_id_query);
 			$stmt->bind_param("s", $username);
-			$stmt->bind_result($user_id);
+			$stmt->bind_result($user_id, $currency);
 			$stmt->execute();
 			$stmt->fetch();
 			$stmt->free_result();
+
+			// Decrement currency because the user viewed a post
+			$currency -= 1;
+
+			// update currency
+			$update_post_query = "update user set currency=? where id=?";
+			$stmt = $db->prepare($update_post_query);
+			$stmt->bind_param("ii", $currency, $user_id);
+			$stmt->execute();
 		}
 
 		// get post values

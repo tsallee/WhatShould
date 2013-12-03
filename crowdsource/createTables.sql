@@ -48,9 +48,9 @@ CREATE TABLE user_voted_posts(
 );
 
 /* Initial Inserts */
-insert into user values (NULL, "rlangewi", md5("password"), "email@email.com", 0, 0, 5, 3);
-insert into user values (NULL, "kkincade", md5("password"), "email2@email.com", 0, 0, 5, 3);
-insert into user values (NULL, "tsallee", md5("password"), "email3@email.com", 0, 0, 5, 3);
+insert into user values (NULL, "rlangewi", md5("password"), "email@email.com", 0, 5, 5, 3);
+insert into user values (NULL, "kkincade", md5("password"), "email2@email.com", 0, 5, 5, 3);
+insert into user values (NULL, "tsallee", md5("password"), "email3@email.com", 0, 5, 5, 3);
 
 insert into post values (NULL, "This is a suggestion for Year1", 1, 0, 1, (0*3)-(1*1), (0+1), "year");
 insert into post values (NULL, "This is a suggestion for Year2", 1, 1, 1, (1*3)-(1*1), (1+1), "year");
