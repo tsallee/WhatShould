@@ -33,23 +33,16 @@
 		// Create string of JSON objects
 		$return_string = "[";
 		while ($stmt->fetch()) {
-			$todo_list_item = $todo_list->fetch_assoc();
-			if ($i != $num_rows - 1) {
-				$post_string = "{id: \"".$post_id."\", content: \"".$post_content."\", score: \"".$post_score."\", completed: \"".$completed."\"}, ";
-			} else {
-				$post_string = "{id: \"".$post_id."\", content: \"".$post_content."\", score: \"".$post_score."\", completed: \"".$completed."\"}";
-			}
-			$return_string += $post_string;
+			$post_string = "{\"id\": \"".$post_id."\", \"content\": \"".$post_content."\", \"score\": \"".$post_score."\", \"completed\": \"".$completed."\"},";
+			$return_string = $return_string . $post_string;
 		}
-		$return_string += "]";
+
+		$return_string = rtrim($return_string, ",");
+
+		$return_string = $return_string . "]";
 
 		$stmt->free_result();
-		$stmt->close;
 
-		if ($todo_list) {
-			return $return_string;
-		} else {
-			return false;
-		}
+		return $return_string;
 	}
 ?>
