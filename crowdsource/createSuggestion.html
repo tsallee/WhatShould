@@ -1,0 +1,38 @@
+<div id = "close_suggestion_form"><a href = "#" onclick = "closeCreateSuggestionPopup()">x</a></div>
+<div id = "create_suggestion_form">
+	<table id = "create_suggestion_table">
+		<caption>Create Suggestion</caption>
+		<tr>
+			<td>
+				Enter one or more suggestions and click "Submit".
+				<div id = "no_suggestion">
+					Please fill in at least one suggestion before submitting.
+				</div>
+			<td>
+		</tr>
+		<tr>
+			<td>
+				<label>Today you should...</label><br>
+				<textarea id = "add_day_suggestion" maxlength = 169></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>This year you should...</label><br>
+				<textarea id = "add_year_suggestion" maxlength = 169></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Before you die you should...</label><br>
+				<textarea id = "add_life_suggestion" maxlength = 169></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan = 2 style = "text-align: center">
+				<a id = "create_suggestion_submit" href = "#" onclick = "checkSuggestions()">Submit</a>
+			</td>
+		</tr>
+	</table>
+
+</div>

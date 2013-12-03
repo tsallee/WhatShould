@@ -26,7 +26,6 @@ function displaySuggestion(type) {
 				suggestionDiv.innerHTML =
 				"<p class = \"suggestion\">We're sorry, we couldn't find a suggestion right now. Please try again later.</p>";
 			} else {
-				alert(response);
 				var responseArray = JSON.parse(response);
 				var id = responseArray[0];
 				var suggestion = responseArray[1];

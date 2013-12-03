@@ -1,4 +1,4 @@
-#create_account_div {
+#create_suggestion_div {
 	position: fixed;
 	top: 0%; left: 0%;
 	width: 100%; height: 100%;
@@ -8,20 +8,20 @@
 	display: none;
 }
 
-#close_account_form {
+#close_suggestion_form {
 	position: absolute;
 	right: 4.5em; top: 1em;
 	z-index: 3;
 }
 
-#close_account_form a {
+#close_suggestion_form a {
 	font-size: 3em;
 	text-decoration: none;
 	color: white;
 	font-weight: bold;
 }
 
-#create_account_form {
+#create_suggestion_form {
 	border-radius: 2em;
 	padding: 3em;
 	text-align: left;
@@ -41,33 +41,34 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-#create_account_table {
+#create_suggestion_table {
 	width: 60%;
 	margin: 0 auto 0 auto;
 }
 
-#create_account_table td {
+#create_suggestion_table td {
 	padding: 1em;
+	font-size: 1.2em;
 	vertical-align: center;
 }
 
-#create_account_table caption {
+#create_suggestion_table caption {
 	padding: .2em 0 .5em 0;
 	font-weight: bold;
 	font-size: 3em;
 	text-shadow: .1em .1em .15em #626264;
 }
 
-#create_account_table label, #create_account_table input {
+#create_suggestion_table label, #create_suggestion_table input {
 	font-size: 1.3em;
 	font-weight: bold;
 }
 
-#create_account_table input {
+#create_suggestion_table input {
 	width: 100%;
 }
 
-#create_account_submit {
+#create_suggestion_submit {
 	color: #610B21;
 	font-weight: bold;
 	text-decoration: none;
@@ -77,14 +78,14 @@
 	background: none;
 }
 
-#create_account_submit:hover {
+#create_suggestion_submit:hover {
 	background: white;
 }
 
-#no_username, #no_password, #no_email, #no_pass_match, #no_day_suggestion, #no_year_suggestion, #no_life_suggestion {
+#no_type, #no_suggestion {
 	position: static;
 	color: #B30309;
-	padding-top: .5em;
+	padding-top: .4em;
 	font-weight: bold;
 	display: none;
 }
