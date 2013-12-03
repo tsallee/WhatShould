@@ -51,17 +51,20 @@ function dayToDo() {
 		if ( request.readyState == 4 && request.status == 200) {
 			// Get the response from the server
 			// alert(request.responseText);
-			var response = JSON.parse(request.responseText);
+			// var response = JSON.parse(request.responseText);
 			var contentArea = document.getElementById("my_account_content");
 
 			var html =
-			"<table>";
+			"<table class = \"todoTable\">";
 			for ( var i = 0; i < 3; i++) {//response.length; i++ ) {
 				html +=
 				"<tr>" +
 					"<td>" +
-						"Hello"
+						"<p class = \"myAccountSuggestion\">Hello I am a suggestion</p>" +
 					"</td>" +
+					"<td>" +
+					"</td>" +
+					
 				"</tr>"
 				;
 			}

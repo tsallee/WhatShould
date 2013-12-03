@@ -8,10 +8,10 @@
 }
 
 #my_account_tabs {
+	text-align: center;
 	font-weight: bold;
-	width: 100%;
 	font-size: 1.5em;
-	padding: 1em;
+	margin: 1em auto 1em auto;
 	color: #610B21;
 }
 
@@ -35,4 +35,23 @@
 	font-size: 2.5em;
 	color: black;
 	text-align: center;
+}
+
+.todoTable {
+	text-align: center;
+	font-size: 1.5em;
+	width: 100%;
+}
+
+.todoTable td {
+	padding: .5em;
+}
+
+.myAccountSuggestion {
+	font-size: 1.3em;
+	line-height: 150%;
+	text-decoration: none;
+	width: 100%;
+	margin: 0;
+	line-height: 150%;
 }
