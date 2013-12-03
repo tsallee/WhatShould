@@ -55,13 +55,27 @@
 	// Insert the post into the database
 	function submit_post($username, $content, $category, $db) {
 
-		$get_user_id_query = "select id from user where username = ?";
+		$get_user_id_query = "select id, currency, score from user where username = ?";
 		$stmt = $db->prepare($get_user_id_query);
 		$stmt->bind_param("s", $username);
-		$stmt->bind_result($user_id);
+		$stmt->bind_result($user_id, $currency, $score);
 		$stmt->execute();
 		$stmt->fetch();
 		$stmt->free_result();
+
+		// Increase currency because the user submitted a suggestion
+		$added_currency = 5 + floor($score/30);
+		if ($added_currency < 0) {
+			$added_currency = 0;
+		}
+		
+		$currency += $added_currency;
+
+		// update currency
+		$update_post_query = "update user set currency=? where id=?";
+		$stmt = $db->prepare($update_post_query);
+		$stmt->bind_param("ii", $currency, $user_id);
+		$stmt->execute();
 
 		// Prepare query statement and execute it
 		$create_user_query = "INSERT INTO post (id, content, user_id, upvotes, downvotes, score, total_votes, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
