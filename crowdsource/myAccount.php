@@ -15,15 +15,21 @@
 		}
 
 		// get user_id
-		$get_user_id = "select id from user where username=".$username;
-		$user = $db->query($get_user_id);
-		$user->fetch_assoc();
-		$user_id = $user['id'];
+		$get_user_id = "select id from user where username=?";
+		$stmt = $db->prepare($get_user_id);
+		$stmt->bind_param("s", $username);
+		$stmt->bind_result($user_id);
+		$stmt->execute();
+		$stmt->fetch();
+		$stmt->free_result();
 
 		// get todo list posts
-		$get_todo_list = "select post.id, post.content, post.score, todo_list.completed from post, todo_list where post.id in (select post_id from todo_list where user_id=".$user_id.") and category=".$type." and post.id=todo_list.post_id";
-		$todo_list = $db->query($get_todo_list);
-		$num_rows = $todo_list->num_rows;
+		$get_todo_list = "select post.id, post.content, post.score, todo_list.completed from post, todo_list where post.id in (select post_id from todo_list where user_id=?) and category=? and post.id=todo_list.post_id";
+		$stmt = $db->prepare($get_todo_list);
+		$stmt->bind_param("is", $user_id, $type);
+		$stmt->execute();
+		$stmt->store_result();
+		$num_rows = $stmt->num_rows;
 
 		// Create string of JSON objects
 		$return_string = "[";
