@@ -106,6 +106,8 @@
 		$stmt->bind_param("ii", $new_score, $author_id);
 		$stmt->execute();
 
+		$db->close();
+		
 		if ($username != "guest") {
 			return "<p class = \"suggestion\">This suggestion was added to your to-do list on your account page.</p>";
 		}

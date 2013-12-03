@@ -102,6 +102,8 @@ if ($quality_count['quality_count'] > 4) {
 	}
 }
 
+$db->close();
+
 if ($post) {
 	echo "[\"" . $post['id'] . "\",\"" . $post['content'] . "\",\"" . $post['score'] . "\"]";
 } else {
