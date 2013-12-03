@@ -54,9 +54,8 @@ function login() {
 function displayMemberLinks(username) {
 	var headerLinks = document.getElementById("header_links");
 	headerLinks.innerHTML =
-	"<a class = \"header\" href = \"#\" onclick = \"topUsers()\">Top Users</a> | " +
 	"<a class = \"header\" href = \"#\" onclick = \"createSuggestion()\">Create Suggestion</a> | " +
-	"<a class = \"header\" href = \"myAccount.html\" target = \"_blank\">" + username + "</a> | " +
+	"<a class = \"header\" href = \"#\" onclick= \"myAccount(" + username + ")\">" + username + "</a> | " +
 	"<a class = \"header\" href = \"#\" onclick = \"logout()\">Log Out</a>"
 	;
 }
@@ -65,7 +64,6 @@ function displayMemberLinks(username) {
 function logout() {
 	var headerLinks = document.getElementById("header_links");
 	headerLinks.innerHTML =
-	"<a class = \"header\" href = \"#\" onclick = \"topUsers()\">Top Users</a> | " +
 	"<a class = \"header\" href = \"#\" onclick = \"createAccount()\">Create Account</a> | " +
 	"<a class = \"header\" href = \"#\" onclick = \"displayLogin()\">Log In</a>"
 	;
